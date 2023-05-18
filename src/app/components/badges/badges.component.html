@@ -1,0 +1,88 @@
+<main id="main" class="main">
+  <section class="section">
+     <div class="row">
+        <div class="col-lg-12">
+           <div class="card">
+              <div class="card-body">
+                 <h5 class="card-title">Generate d'echange (trade -in) </h5>
+                 <form>
+                    <div class="row mb-3">
+                       <label for="inputText" class="col-sm-2 col-form-label">id</label>
+                       <div class="col-sm-10"> <input type="text" class="form-control"></div>
+                    </div>
+                    <div class="row mb-3">
+                       <label for="inputEmail" class="col-sm-2 col-form-label">Name </label>
+                       <div class="col-sm-10"> <input type="email" class="form-control"></div>
+                    </div>
+                    <div class="row mb-3">
+                       <label for="inputNumber" class="col-sm-2 col-form-label"> Price </label>
+                       <div class="col-sm-10"> <input type="text" class="form-control"></div>
+                    </div>
+                    <div class="row mb-3">
+                     <label for="inputNumber" class="col-sm-2 col-form-label">available </label>
+                     <div class="col-sm-10"> <input type="texts" class="form-control"></div>
+                  </div>
+                    <div class="row mb-3">
+                       <label for="inputNumber" class="col-sm-2 col-form-label">Device Image</label>
+                       <div class="col-sm-10"> <input class="form-control" type="file" id="formFile"></div>
+                    </div>
+                    <div class="row mb-3">
+                       <label for="inputDate" class="col-sm-2 col-form-label">Date of Rental</label>
+                       <div class="col-sm-10"> <input type="date" class="form-control"></div>
+                    </div>
+                    <div class="row mb-3">
+                       <label for="inputPassword" class="col-sm-2 col-form-label">Description</label>
+                       <div class="col-sm-10"><textarea class="form-control" style="height: 100px"></textarea></div>
+                    </div>
+                    <div class="row mb-3">
+                       <legend class="col-form-label col-sm-2 pt-0">available</legend>
+                       <div class="col-sm-10">
+                          <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck1"> <label class="form-check-label" for="gridCheck1"> YES </label></div>
+                          <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck2" checked> <label class="form-check-label" for="gridCheck2"> NO </label></div>
+                       </div>
+                    </div>
+                    <div class="row mb-3">
+                       <label class="col-sm-2 col-form-label">Policy of Contract </label>
+                       <div class="col-sm-10"> <input type="text" class="form-control" value="Read only / Disabled" disabled></div>
+                    </div>
+                    <div class="row mb-3">
+                       <label class="col-sm-2 col-form-label">Echange for </label>
+                       <div class="col-sm-10">
+                          <select class="form-select" aria-label="Default select example">
+                             <option selected>Open this select menu</option>
+                             <option value="1">Sale </option>
+                             <option value="2">Rental </option>
+                          </select>
+                       </div>
+                    </div>
+                    <div class="row mb-3">
+                       <label class="col-sm-2 col-form-label">Submit Button</label>
+                       <div class="col-sm-10"> <button type="submit" class="btn btn-primary">Submit Form</button></div>
+                    </div>
+                 </form>
+              </div>
+           </div>
+        </div>
+     </div>
+  </section>
+</main>
+
+<div ng-app="tradeManagementApp" ng-controller="tradeManagementCtrl">
+
+  <!-- This section contains a form for adding a new trade -->
+  <div class="row mb-12">
+    <h2>Add a Trade</h2>
+    <form>
+      <label for="symbol"> Symbol:</label>
+      <input type="text" id="symbol" ng-model="newTrade.symbol" required >
+
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" ng-model="newTrade.quantity" required>
+
+      <label for="price">Price:</label>
+      <input type="number" id="price" ng-model="newTrade.price" required>
+
+      <button ng-click="addTrade()">Add Trade</button>
+    </form>
+  </div>
+</div>
