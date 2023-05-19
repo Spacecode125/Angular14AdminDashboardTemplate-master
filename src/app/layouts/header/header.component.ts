@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,13 +8,23 @@ import { DOCUMENT } from '@angular/common'
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  user: any;
 
-  constructor(@Inject(DOCUMENT) private document: Document) { }
+  constructor(@Inject(DOCUMENT) private document: Document,private router: Router) { }
 
   ngOnInit(): void {
+    const output = window.localStorage.getItem('user');
+    this.user = output ? JSON.parse(output) : null;
   }
-  sidebarToggle()
-  {
+
+  signOut(): void {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    location.reload();
+    this.router.navigate(['/']);
+  }
+
+  sidebarToggle(): void {
     //toggle sidebar function
     this.document.body.classList.toggle('toggle-sidebar');
   }
