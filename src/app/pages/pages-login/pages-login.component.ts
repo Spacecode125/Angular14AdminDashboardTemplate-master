@@ -17,7 +17,7 @@ export class LoginComponent {
   constructor(private router: Router) {}
 
   onLogin(): void {
-    const url = 'http://localhost:3000/api/user/login';
+    const url ='http://localhost:3000/api/user/login';
     const { email, password } = this.loginObj;
 
     axios.post(url, { email, password })
@@ -29,8 +29,6 @@ export class LoginComponent {
       })
       .catch(error => {
         console.error(error.response.data.message);
-        console.log(email);
-        console.log(password);
       });
   }
 

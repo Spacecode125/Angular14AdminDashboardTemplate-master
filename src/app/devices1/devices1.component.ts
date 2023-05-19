@@ -1,6 +1,6 @@
-import axios from 'axios';
+import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import axios from 'axios';
 
 @Component({
   selector: 'app-devices1',

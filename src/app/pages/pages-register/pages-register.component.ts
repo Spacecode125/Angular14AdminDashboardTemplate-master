@@ -25,7 +25,7 @@ export class PagesRegisterComponent  {
 
   onRegister(): void {
     const url = 'http://localhost:3000/api/user/register';
-    const { email,   firstName, lastName, role ,phone,  address,password } = this.RegisterObj;
+    const { email, firstName, lastName, role ,phone, address,password } = this.RegisterObj;
 
     axios.post(url, { email, firstName , lastName ,role,phone, address, password ,})
       .then(response => {

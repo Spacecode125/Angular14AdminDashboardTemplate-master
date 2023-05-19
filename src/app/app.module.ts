@@ -6,14 +6,11 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { AlertsComponent } from './components/Alerts/Alerts.component';
-import { BadgesComponent } from './components/badges/badges.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ListGroupComponent } from './components/list-group/list-group.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { TabsComponent } from './components/tabs/tabs.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { FormsElementsComponent } from './components/forms-elements/forms-elements.component';
 import { FormsLayoutsComponent } from './components/forms-layouts/forms-layouts.component';
@@ -28,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Devices1Component } from './devices1/devices1.component';
 import { DevicestatusComponent } from './devicestatus/devicestatus.component';
+import { RentedcontractComponent } from './rentedcontract/rentedcontract.component';
 
 
 
@@ -42,14 +40,11 @@ import { DevicestatusComponent } from './devicestatus/devicestatus.component';
     FooterComponent,
     SidebarComponent,
     DashboardComponent,
-    AlertsComponent,
-    BadgesComponent,
     BreadcrumbsComponent,
     CardsComponent,
     CarouselComponent,
     ListGroupComponent,
     ModalComponent,
-    TabsComponent,
     PaginationComponent,
     FormsElementsComponent,
     FormsLayoutsComponent,
@@ -62,6 +57,7 @@ import { DevicestatusComponent } from './devicestatus/devicestatus.component';
     LoginComponent,
     Devices1Component,
     DevicestatusComponent,
+    RentedcontractComponent,
   ],
   imports: [
     BrowserModule,
