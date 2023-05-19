@@ -68,7 +68,9 @@
                   <div class="label">Email: {{ user.email }}</div>
                 </div>
                 <div class="row">
-                  <div class="label">Address: {{ user.address }}</div>
+                  <div class="label">Address: {{ user.address }}
+
+                  </div>
                 </div>
                 <div class="row">
                   <div class="label">Phone: {{ user.phone }}</div>
@@ -91,6 +93,7 @@
                         accept="image/*"
                         style="display: none"
                         (change)="handleFileInput($event)"
+
                       />
                       <img [src]="getImageSource()" alt="Profile" />
                       <div class="pt-2">
@@ -114,8 +117,8 @@
                     <label
                       for="firstName"
                       class="col-md-4 col-lg-3 col-form-label"
-                      >First Name</label
-                    >
+                      >First Name
+                    </label >
                     <div class="col-md-8 col-lg-9">
                       <input
                         name="firstName"
@@ -123,6 +126,8 @@
                         class="form-control"
                         id="firstName"
                         value="{{ user.firstName }}"
+                        [ngModel]="profileObj.firstName" (ngModelChange)="profileObj.firstName = $event" required
+
                       />
                     </div>
                   </div>
@@ -139,21 +144,23 @@
                         class="form-control"
                         id="lastName"
                         value="{{ user.lastName }}"
+                        [ngModel]="profileObj.lastName" (ngModelChange)="profileObj.lastName = $event" required
                       />
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="about" class="col-md-4 col-lg-3 col-form-label"
-                      >About</label
-                    >
+                      >About</label>
                     <div class="col-md-8 col-lg-9">
                       <textarea
                         name="about"
                         class="form-control"
                         id="about"
                         style="height: 100px"
-                        >{{ user.about }}</textarea
-                      >
+                        [ngModel]="profileObj.about" (ngModelChange)="profileObj.about = $event" required
+                        >{{ user.about }}
+
+                        </textarea>
                     </div>
                   </div>
 
@@ -161,8 +168,7 @@
                     <label
                       for="Address"
                       class="col-md-4 col-lg-3 col-form-label"
-                      >Address</label
-                    >
+                      >Address</label>
                     <div class="col-md-8 col-lg-9">
                       <input
                         name="address"
@@ -170,6 +176,8 @@
                         class="form-control"
                         id="Address"
                         value="{{ user.address }}a"
+                        [ngModel]="profileObj.address" (ngModelChange)="profileObj.address = $event" required
+
                       />
                     </div>
                   </div>
@@ -184,11 +192,12 @@
                         class="form-control"
                         id="Phone"
                         value="{{ user.phone }}"
+                        [ngModel]="profileObj.phone" (ngModelChange)="profileObj.phone = $event" required
                       />
                     </div>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" click="onEditProfile()" >
                       Save Changes
                     </button>
                   </div>
