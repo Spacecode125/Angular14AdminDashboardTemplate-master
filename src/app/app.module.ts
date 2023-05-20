@@ -8,8 +8,6 @@ import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { CardsComponent } from './components/cards/cards.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
-import { ListGroupComponent } from './components/list-group/list-group.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { FormsElementsComponent } from './components/forms-elements/forms-elements.component';
@@ -26,6 +24,8 @@ import { FormsModule } from '@angular/forms';
 import { Devices1Component } from './devices1/devices1.component';
 import { DevicestatusComponent } from './devicestatus/devicestatus.component';
 import { RentedcontractComponent } from './rentedcontract/rentedcontract.component';
+import { AdminComponent } from './admin/admin.component';
+import { SalesmanComponent } from './salesman/salesman.component';
 
 
 
@@ -42,8 +42,6 @@ import { RentedcontractComponent } from './rentedcontract/rentedcontract.compone
     DashboardComponent,
     BreadcrumbsComponent,
     CardsComponent,
-    CarouselComponent,
-    ListGroupComponent,
     ModalComponent,
     PaginationComponent,
     FormsElementsComponent,
@@ -58,6 +56,8 @@ import { RentedcontractComponent } from './rentedcontract/rentedcontract.compone
     Devices1Component,
     DevicestatusComponent,
     RentedcontractComponent,
+    AdminComponent,
+    SalesmanComponent,
   ],
   imports: [
     BrowserModule,
