@@ -1,0 +1,69 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>List des produits</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item">Tables</li>
+        <li class="breadcrumb-item active">produits</li>
+      </ol>
+    </nav>
+  </div>
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Produits</h5>
+            <div class="d-flex align-items-center justify-content-between">
+              <p class="mr-auto">
+                Ce sont tous les produits que vous avez ajoutés
+              </p>
+              <button type="button" class="btn btn-success" routerLink="/add-device">Add produit</button>
+            </div>
+            <table class="table">
+              <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Serial Number</th>
+                    <th scope="col">Purchase Price</th>
+                    <th scope="col">Rental Price</th>
+                    <th scope="col">Year of Manufacture</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let device of devices; let i = index">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ device.type }}</td>
+                  <td>{{ device.brand }}</td>
+                  <td>{{ device.serialNumber }}</td>
+                  <td>{{ device.purchacePrice }}</td>
+                  <td>{{ device.rentalPrice }}</td>
+                  <td>{{ device.yearOfManufacture | date: 'yyyy-MM-dd' }}</td>
+                  <td>{{ device.createdAt | date: 'yyyy-MM-dd' }}</td>
+                  <td>
+                    <div class="btn-group" role="group" aria-label="Actions">
+                      <button type="button" class="btn btn-danger" (click)="deleteDevice(device._id)">
+                        Supprimer
+                      </button>
+                      <button type="button" class="btn btn-primary">
+                        Modifier
+                      </button>
+                      <button type="button" class="btn btn-secondary">
+                        View
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

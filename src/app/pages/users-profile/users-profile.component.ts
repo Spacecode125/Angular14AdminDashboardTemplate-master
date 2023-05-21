@@ -57,8 +57,11 @@ export class UsersProfileComponent implements OnInit {
           'Content-Type': 'multipart/form-data'
         }
       } ).then(response => {
+        localStorage.setItem('user',JSON.stringify(response.data))
         console.log(response);
-        this.router.navigate(['/dashboard'])
+        this.router.navigateByUrl('/').then(() => {
+          location.reload();
+        });
       })
       .catch(error => {
         console.log(firstName)

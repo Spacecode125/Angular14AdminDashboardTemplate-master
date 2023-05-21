@@ -6,26 +6,25 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
-import { CardsComponent } from './components/cards/cards.component';
-import { ModalComponent } from './components/modal/modal.component';
-import { PaginationComponent } from './components/pagination/pagination.component';
+import { RentedContractComponent } from './offers/rentedContract/rentedContract.component';
 import { FormsElementsComponent } from './components/forms-elements/forms-elements.component';
 import { FormsLayoutsComponent } from './components/forms-layouts/forms-layouts.component';
 import { FormsEditorsComponent } from './components/forms-editors/forms-editors.component';
-import { TablesGeneralComponent } from './components/tables-general/tables-general.component';
-import { TablesDataComponent } from './components/tables-data/tables-data.component';
 import { UsersProfileComponent } from './pages/users-profile/users-profile.component';
 import { PagesContactComponent } from './pages/pages-contact/pages-contact.component';
 import { PagesRegisterComponent } from './pages/pages-register/pages-register.component';
 import { LoginComponent } from './pages/pages-login/pages-login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { Devices1Component } from './devices1/devices1.component';
-import { DevicestatusComponent } from './devicestatus/devicestatus.component';
-import { RentedcontractComponent } from './rentedcontract/rentedcontract.component';
+import { AddDeviceComponent } from './components/add-device/add-device.component';
+import { AddDevicestatusComponent } from './offers/devicestatus-add/devicestatus-add.component';
+import { AddRentedcontractComponent } from './offers/rentedContract-add/rentedContract-add.component';
 import { AdminComponent } from './admin/admin.component';
-import { SalesmanComponent } from './salesman/salesman.component';
+import { DevicesComponent } from './components/devices/devices.component';
+import { ContractsComponent } from './components/contracts/contracts.component';
+import { TradedContractComponent } from './offers/traded-contract/traded-contract.component';
+import { PurchaseContractComponent } from './offers/purchase-contract/purchase-contract.component';
+import { ListOffersComponent } from './offers/list-offers/list-offers.component';
 
 
 
@@ -40,24 +39,23 @@ import { SalesmanComponent } from './salesman/salesman.component';
     FooterComponent,
     SidebarComponent,
     DashboardComponent,
-    BreadcrumbsComponent,
-    CardsComponent,
-    ModalComponent,
-    PaginationComponent,
+    RentedContractComponent,
     FormsElementsComponent,
     FormsLayoutsComponent,
     FormsEditorsComponent,
-    TablesGeneralComponent,
-    TablesDataComponent,
     UsersProfileComponent,
     PagesContactComponent,
     PagesRegisterComponent,
     LoginComponent,
-    Devices1Component,
-    DevicestatusComponent,
-    RentedcontractComponent,
+    AddDeviceComponent,
+    AddDevicestatusComponent,
+    AddRentedcontractComponent,
     AdminComponent,
-    SalesmanComponent,
+    DevicesComponent,
+    ContractsComponent,
+    TradedContractComponent,
+    PurchaseContractComponent,
+    ListOffersComponent,
   ],
   imports: [
     BrowserModule,

@@ -20,8 +20,9 @@ export class HeaderComponent implements OnInit {
   signOut(): void {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    location.reload();
-    this.router.navigate(['/']);
+    this.router.navigateByUrl('/').then(() => {
+      location.reload();
+    });
   }
 
   sidebarToggle(): void {
