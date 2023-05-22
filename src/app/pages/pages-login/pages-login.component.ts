@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
     password: '',
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private toastr: ToastrService) {}
 
   onLogin(): void {
     const url ='http://localhost:3000/api/user/login';
@@ -24,11 +25,11 @@ export class LoginComponent {
       .then(response => {
         localStorage.setItem('token',JSON.stringify(response.data.token))
         localStorage.setItem('user',JSON.stringify(response.data.user))
-        console.log(response);
+        this.toastr.success("Loged in successfully");
         this.router.navigate(['/'])
       })
       .catch(error => {
-        console.error(error.response.data.message);
+        this.toastr.error(error.response.data.message);
       });
   }
 

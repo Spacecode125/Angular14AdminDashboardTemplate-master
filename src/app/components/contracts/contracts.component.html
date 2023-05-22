@@ -41,7 +41,7 @@
                     <td>2016-05-25</td>
                     <td>
                       <div class="btn-group" role="group" aria-label="Actions">
-                        <button type="button" class="btn btn-danger">
+                        <button type="button" class="btn btn-danger" *ngIf="user.role == 'admin'">
                           Supprimer
                         </button>
                         <button type="button" class="btn btn-secondary">

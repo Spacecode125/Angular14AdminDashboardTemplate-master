@@ -25,6 +25,10 @@ import { ContractsComponent } from './components/contracts/contracts.component';
 import { TradedContractComponent } from './offers/traded-contract/traded-contract.component';
 import { PurchaseContractComponent } from './offers/purchase-contract/purchase-contract.component';
 import { ListOffersComponent } from './offers/list-offers/list-offers.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditDeviceComponent } from './components/edit-device/edit-device.component';
+import { ViewDeviceComponent } from './components/view-device/view-device.component';
 
 
 
@@ -56,12 +60,24 @@ import { ListOffersComponent } from './offers/list-offers/list-offers.component'
     TradedContractComponent,
     PurchaseContractComponent,
     ListOffersComponent,
+    EditDeviceComponent,
+    ViewDeviceComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut:5000,
+      tapToDismiss:true,
+      closeButton:true,
+      preventDuplicates:true,
+      progressBar:true,
+      disableTimeOut:false,
+      positionClass: 'toast-top-right',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

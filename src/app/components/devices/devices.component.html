@@ -19,46 +19,91 @@
               <p class="mr-auto">
                 Ce sont tous les produits que vous avez ajoutés
               </p>
-              <button type="button" class="btn btn-success" routerLink="/add-device">Add produit</button>
+              <button
+                type="button"
+                class="btn btn-success"
+                routerLink="/add-device"
+              >
+                Add produit
+              </button>
             </div>
             <table class="table">
               <thead class="table-dark">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Serial Number</th>
-                    <th scope="col">Purchase Price</th>
-                    <th scope="col">Rental Price</th>
-                    <th scope="col">Year of Manufacture</th>
-                    <th scope="col">Created At</th>
-                    <th scope="col"></th>
+                  <th scope="col">#</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Brand</th>
+                  <th scope="col">Serial Number</th>
+                  <th scope="col">Purchase Price</th>
+                  <th scope="col">Rental Price</th>
+                  <th scope="col">Year of Manufacture</th>
+                  <th scope="col">Created At</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let device of devices; let i = index">
-                  <th scope="row">{{ i + 1 }}</th>
-                  <td>{{ device.type }}</td>
-                  <td>{{ device.brand }}</td>
-                  <td>{{ device.serialNumber }}</td>
-                  <td>{{ device.purchacePrice }}</td>
-                  <td>{{ device.rentalPrice }}</td>
-                  <td>{{ device.yearOfManufacture | date: 'yyyy-MM-dd' }}</td>
-                  <td>{{ device.createdAt | date: 'yyyy-MM-dd' }}</td>
-                  <td>
-                    <div class="btn-group" role="group" aria-label="Actions">
-                      <button type="button" class="btn btn-danger" (click)="deleteDevice(device._id)">
-                        Supprimer
-                      </button>
-                      <button type="button" class="btn btn-primary">
-                        Modifier
-                      </button>
-                      <button type="button" class="btn btn-secondary">
-                        View
-                      </button>
-                    </div>
+                <ng-container *ngIf="devices.length > 0">
+                  <tr *ngFor="let device of devices; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ device.type }}</td>
+                    <td>{{ device.brand }}</td>
+                    <td>{{ device.serialNumber }}</td>
+                    <td>{{ device.purchasePrice }}</td>
+                    <td>{{ device.rentalPrice }}</td>
+                    <td>
+                      {{ device.yearOfManufacture | date : "yyyy-MM-dd" }}
+                    </td>
+                    <td>{{ device.createdAt | date : "yyyy-MM-dd" }}</td>
+                    <td>
+                      <div class="btn-group" role="group" aria-label="Actions">
+                        <button
+                          type="button"
+                          class="btn btn-danger"
+                          (click)="deleteDevice(device._id)"
+                        >
+                          Delete
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          (click)="navigateToEditDevice(device)"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          (click)="navigateToDeviceDetails(device)"
+                        >
+                          View
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </ng-container>
+                <tr
+                  *ngIf="errorMessage"
+                  class="text-center fw-bold text-danger"
+                >
+                  <td colspan="9">
+                    {{ errorMessage }}
                   </td>
                 </tr>
+                <tr
+                  *ngIf="!devices.length && !errorMessage"
+                  class="text-center"
+                >
+                  <td colspan="9">
+                    There is no product for this salesman at the moment
+                  </td>
+                </tr>
+                <!-- <ng-template #noDevices *ngIf="!errorMessage">
+                  <tr>
+                    <td colspan="9" class="text-center">
+                      There is no product to this salesman at the moment
+                    </td>
+                  </tr>
+                </ng-template> -->
               </tbody>
             </table>
           </div>

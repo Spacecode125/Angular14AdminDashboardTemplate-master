@@ -6,6 +6,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
   styleUrls: ['./contracts.component.css']
 })
 export class ContractsComponent implements OnInit {
+  user: any;
 
   constructor(private elementRef: ElementRef) { }
 
@@ -14,6 +15,8 @@ export class ContractsComponent implements OnInit {
     s.type = 'text/javascript';
     s.src = '../assets/js/main.js';
     this.elementRef.nativeElement.appendChild(s);
+    const output = window.localStorage.getItem('user');
+    this.user = output ? JSON.parse(output) : null;
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component,  } from '@angular/core';
 import axios from 'axios';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-pages-register',
@@ -20,7 +21,7 @@ export class PagesRegisterComponent  {
 
 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private toastr: ToastrService) {}
 
 
   onRegister(): void {
@@ -31,12 +32,10 @@ export class PagesRegisterComponent  {
       .then(response => {
         console.log(response);
         this.router.navigate(['/pages-login'])
+        this.toastr.success("Acount successfully created");
       })
       .catch(error => {
-        console.log(email)
-        console.log(firstName)
-        console.log(lastName)
-        console.error(error.response.data.message);
+        this.toastr.error(error.response.data.message);
       });
   }
 

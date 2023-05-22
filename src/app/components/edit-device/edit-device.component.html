@@ -1,0 +1,149 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Edit Device</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+          <li class="breadcrumb-item">Components</li>
+          <li class="breadcrumb-item active">Device</li>
+        </ol>
+      </nav>
+    </div>
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Edit Device</h5>
+              <form class="row g-3 needs-validation" novalidate>
+                <div class="row mb-3">
+                  <label for="brand" class="col-sm-2 col-form-label"
+                    >Brand
+                  </label>
+                  <div class="col-sm-10">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="brand"
+                      name="brand"
+                      [ngModel]="editDeviceObj.brand"
+                      (ngModelChange)="editDeviceObj.brand = $event"
+                      required
+                    />
+                  </div>
+                  <div class="invalid-feedback">Please enter the brand</div>
+                </div>
+                <div class="row mb-3">
+                  <label for="type" class="col-sm-2 col-form-label">Type </label>
+                  <div class="col-sm-10">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="type"
+                      name="type"
+                      [ngModel]="editDeviceObj.type"
+                      (ngModelChange)="editDeviceObj.type = $event"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="description" class="col-sm-2 col-form-label"
+                    >Description</label
+                  >
+                  <div class="col-sm-10">
+                    <textarea
+                      rows="4"
+                      cols="100"
+                      class="form-control"
+                      id="description"
+                      name="description"
+                      [ngModel]="editDeviceObj.description"
+                      (ngModelChange)="editDeviceObj.description = $event"
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="image" class="col-sm-2 col-form-label">
+                    Image</label
+                  >
+                  <div class="col-sm-10">
+                    <input
+                      class="form-control"
+                      type="file"
+                      accept="image/*"
+                      id="image"
+                      name="image"
+                      (change)="handleFileInput($event)"
+                    />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="purchacePrice" class="col-sm-2 col-form-label"
+                    >Purchace Price</label
+                  >
+                  <div class="col-sm-10">
+                    <input
+                      class="form-control"
+                      type="number"
+                      id="purchacePrice"
+                      name="purchacePrice"
+                      [ngModel]="editDeviceObj.purchacePrice"
+                      (ngModelChange)="editDeviceObj.purchacePrice = $event"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="rentalPrice" class="col-sm-2 col-form-label"
+                    >Rental Price</label
+                  >
+                  <div class="col-sm-10">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="rentalPrice"
+                      name="rentalPrice"
+                      [ngModel]="editDeviceObj.rentalPrice"
+                      (ngModelChange)="editDeviceObj.rentalPrice = $event"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="yearOfManufacture" class="col-sm-2 col-form-label"
+                    >Year Of Manufacture
+                  </label>
+                  <div class="col-sm-10">
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="yearOfManufacture"
+                      name="yearOfManufacture"
+                      [ngModel]="editDeviceObj.yearOfManufacture"
+                      (ngModelChange)="editDeviceObj.yearOfManufacture = $event"
+                    />
+                  </div>
+                </div>
+  
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Edit Device</label>
+                  <div class="col-sm-10">
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      (click)="editDevice()"
+                    >
+                      Edit Device
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  

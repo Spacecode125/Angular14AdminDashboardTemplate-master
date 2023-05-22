@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-rentedContract',
   templateUrl: './rentedContract.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 })
 export class RentedContractComponent implements OnInit {
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef,private router: Router) { }
 
   ngOnInit(): void {
     var s = document.createElement('script');
