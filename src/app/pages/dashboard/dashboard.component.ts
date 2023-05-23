@@ -12,7 +12,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(private router: Router) {}
   navigateToDeviceDetails(device: any): void {
-    this.router.navigate(['/view-device'], { queryParams: device });
+    const queryParams = { ...device, user: JSON.stringify(device.user) };
+    this.router.navigate(['/view-device'], { queryParams });
   }
   ngOnInit(): void {
     const url = 'http://localhost:3000/api/device';

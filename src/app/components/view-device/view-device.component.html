@@ -45,20 +45,24 @@
             <span class="fs-6 text-dark">DT</span>
           </span>
         </h5>
-        <br />
         <h5 class="fs-4 text-dark fw-bold">
           <i class="bi bi-calendar3"></i> Year of Manufacture:
           <span class="fs-6 text-muted">{{
             deviceDetailsObj.yearOfManufacture | date : "yyyy-MM-dd"
           }}</span>
         </h5>
+        <br />
+        <h5 class="fs-4 text-dark fw-bold">
+          <i class="bi bi-person-fill"></i> Product owner:
+          <span class="fs-6 text-muted"> {{ deviceDetailsObj.owner }}</span>
+        </h5>
         <h5 class="fs-4 text-dark fw-bold">
           <i class="bi bi-telephone-fill"></i> Phone number:
-          <span class="fs-6 text-muted">+(216) {{ user.phone }}</span>
+          <span class="fs-6 text-muted">+(216) {{ deviceDetailsObj.phone }}</span>
         </h5>
         <h5 class="fs-4 text-dark fw-bold">
           <i class="bi bi-geo-alt-fill"></i> Address:
-          <span class="fs-6 text-muted">{{ user.address }}</span>
+          <span class="fs-6 text-muted">{{ deviceDetailsObj.address }}</span>
         </h5>
         <br />
         <h5 class="fs-4 text-dark fw-bold">Description:</h5>

@@ -60,7 +60,8 @@ export class DevicesComponent implements OnInit {
     this.router.navigate(['/edit-device'], { queryParams: device });
   }
   navigateToDeviceDetails(device: any): void {
-    this.router.navigate(['/view-device'], { queryParams: device });
+    const queryParams = { ...device, user: JSON.stringify(device.user) };
+    this.router.navigate(['/view-device'], { queryParams });
   }
   ngAfterViewInit(): void {
     const s = document.createElement('script');

@@ -1,11 +1,11 @@
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>List des location</h1>
+    <h1>List of rented products</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
         <li class="breadcrumb-item">Offer</li>
-        <li class="breadcrumb-item active">Location</li>
+        <li class="breadcrumb-item active">Rental</li>
       </ol>
     </nav>
   </div>
@@ -14,120 +14,68 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Location</h5>
-            <p>Ce sont tous les location les client avez ajoutés</p>
+            <h5 class="card-title">Rental</h5>
+            <p>These are all the Rentals that the customers have added</p>
             <table class="table">
               <thead class="table-dark">
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Position</th>
-                  <th scope="col">Age</th>
-                  <th scope="col">Start Date</th>
+                  <th scope="col">Device</th>
+                  <th scope="col">Client name</th>
+                  <th scope="col">Client phone</th>
+                  <th scope="col">Valid from</th>
+                  <th scope="col">Valid to</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Status</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <ng-container *ngIf="devices.length > 0">
+                  <tr *ngFor="let device of devices; let i = index">
+                
                   <th scope="row">1</th>
-                  <td>Brandon Jacob</td>
-                  <td>Designer</td>
-                  <td>28</td>
+                  <td>Ferari</td>
+                  <td>Helmi</td>
+                  <td>20 499 382</td>
                   <td>2016-05-25</td>
+                  <td>2016-05-25</td>
+                  <td>28 DT</td>
+                  <td class="text-warning">En attent</td>
                   <td>
                     <div class="btn-group" role="group" aria-label="Actions">
                       <button type="button" class="btn btn-danger">
-                        Supprimer
+                        Delete
                       </button>
                       <button type="button" class="btn btn-secondary">
                         View
                       </button>
                       <button type="button" class="btn btn-success" routerLink="/add-devicestatus">
-                        Add produit status
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Bridie Kessler</td>
-                  <td>Developer</td>
-                  <td>35</td>
-                  <td>2014-12-05</td>
-                  <td>
-                    <div class="btn-group" role="group" aria-label="Actions">
-                      <button type="button" class="btn btn-danger">
-                        Supprimer
+                        Add status
                       </button>
                       <button type="button" class="btn btn-secondary">
-                        View
-                      </button>
-                      <button type="button" class="btn btn-success" routerLink="/add-devicestatus">
-                        Add produit status
+                        View status
                       </button>
                     </div>
                   </td>
                 </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Ashleigh Langosh</td>
-                  <td>Finance</td>
-                  <td>45</td>
-                  <td>2011-08-12</td>
-                  <td>
-                    <div class="btn-group" role="group" aria-label="Actions">
-                      <button type="button" class="btn btn-danger">
-                        Supprimer
-                      </button>
-                      <button type="button" class="btn btn-secondary">
-                        View
-                      </button>
-                      <button type="button" class="btn btn-success" routerLink="/add-devicestatus">
-                        Add produit status
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Angus Grady</td>
-                  <td>HR</td>
-                  <td>34</td>
-                  <td>2012-06-11</td>
-                  <td>
-                    <div class="btn-group" role="group" aria-label="Actions">
-                      <button type="button" class="btn btn-danger">
-                        Supprimer
-                      </button>
-                      <button type="button" class="btn btn-secondary">
-                        View
-                      </button>
-                      <button type="button" class="btn btn-success" routerLink="/add-devicestatus">
-                        Add produit status
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Raheem Lehner</td>
-                  <td>Dynamic Division Officer</td>
-                  <td>47</td>
-                  <td>2011-04-19</td>
-                  <td>
-                    <div class="btn-group" role="group" aria-label="Actions">
-                      <button type="button" class="btn btn-danger">
-                        Supprimer
-                      </button>
-                      <button type="button" class="btn btn-secondary">
-                        View
-                      </button>
-                      <button type="button" class="btn btn-success" routerLink="/add-devicestatus">
-                        Add produit status
-                      </button>
-                    </div>
-                  </td>
-                </tr>
+              </ng-container>
+              <tr
+                *ngIf="errorMessage"
+                class="text-center fw-bold text-danger"
+              >
+                <td colspan="9">
+                  {{ errorMessage }}
+                </td>
+              </tr>
+              <tr
+                *ngIf="!devices.length && !errorMessage"
+                class="text-center"
+              >
+                <td colspan="9">
+                  There is no product for this salesman at the moment
+                </td>
+              </tr>
               </tbody>
             </table>
           </div>
