@@ -41,6 +41,7 @@ const routes: Routes = [
   { path: 'rentedcontract-add', component: AddRentedcontractComponent },
   { path: 'edit-device', component: EditDeviceComponent },
   { path: 'view-device', component: ViewDeviceComponent },
+   
 ];
 
 @NgModule({
