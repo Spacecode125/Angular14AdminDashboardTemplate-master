@@ -1,109 +1,70 @@
 <main id="main" class="main">
-    <div class="pagetitle">
-      <h1>List des offers</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-          <li class="breadcrumb-item">Offer</li>
-          <li class="breadcrumb-item active">List offers</li>
-        </ol>
-      </nav>
-    </div>
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Èchange</h5>
-              <p>Ce sont tous les offers que les client ajoutés</p>
-              <table class="table datatable">
-                <thead class="table-dark">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
+  <div class="pagetitle">
+    <h1>List des offers</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item">Offer</li>
+        <li class="breadcrumb-item active">List offers</li>
+      </ol>
+    </nav>
+  </div>
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Èchange</h5>
+            <p>Ce sont tous les offers que les client ajoutés</p>
+            <table class="table">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Clinet name</th>
+                  <th scope="col">Clinet phone</th>
+                  <th scope="col">Date</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="devices.length > 0">
+                  <tr *ngFor="let device of devices; let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>Purchase</td>
+                    <td>{{device.client['firstName']}}</td>
+                    <td>{{device.client['lastName']}}</td>
                     <td>2016-05-25</td>
                     <td>
                       <div class="btn-group" role="group" aria-label="Actions">
                         <button type="button" class="btn btn-secondary">
-                          View
+                          See more
                         </button>
                       </div>
                     </td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td>2014-12-05</td>
-                    <td>
-                      <div class="btn-group" role="group" aria-label="Actions">
-                        <button type="button" class="btn btn-secondary">
-                          View
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td>2011-08-12</td>
-                    <td>
-                      <div class="btn-group" role="group" aria-label="Actions">
-                        <button type="button" class="btn btn-secondary">
-                          View
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td>2012-06-11</td>
-                    <td>
-                      <div class="btn-group" role="group" aria-label="Actions">
-                        <button type="button" class="btn btn-secondary">
-                          View
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                    <td>2011-04-19</td>
-                    <td>
-                      <div class="btn-group" role="group" aria-label="Actions">
-                        <button type="button" class="btn btn-secondary">
-                          View
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                </ng-container>
+                <tr
+                  *ngIf="errorMessage"
+                  class="text-center fw-bold text-danger"
+                >
+                  <td colspan="9">
+                    {{ errorMessage }}
+                  </td>
+                </tr>
+                <tr
+                  *ngIf="!devices.length && !errorMessage"
+                  class="text-center"
+                >
+                  <td colspan="9">
+                    There is no product for this salesman at the moment
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    </section>
-  </main>
-  
+    </div>
+  </section>
+</main>

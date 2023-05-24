@@ -20,6 +20,7 @@ import { DevicesComponent } from './components/devices/devices.component';
 import { EditDeviceComponent } from './components/edit-device/edit-device.component';
 import { ViewDeviceComponent } from './components/view-device/view-device.component';
 
+
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
@@ -41,7 +42,7 @@ const routes: Routes = [
   { path: 'rentedcontract-add', component: AddRentedcontractComponent },
   { path: 'edit-device', component: EditDeviceComponent },
   { path: 'view-device', component: ViewDeviceComponent },
-   
+
 ];
 
 @NgModule({

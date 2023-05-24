@@ -60,8 +60,12 @@ export class DevicesComponent implements OnInit {
     this.router.navigate(['/edit-device'], { queryParams: device });
   }
   navigateToDeviceDetails(device: any): void {
-    const queryParams = { ...device, user: JSON.stringify(device.user) };
+    if(device!=null){
+      const queryParams = { ...device, user: JSON.stringify(device.user) };
     this.router.navigate(['/view-device'], { queryParams });
+    }else{
+      this.router.navigate(['/error-404'])
+    }
   }
   ngAfterViewInit(): void {
     const s = document.createElement('script');

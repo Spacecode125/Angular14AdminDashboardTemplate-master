@@ -33,21 +33,22 @@
               <tbody>
                 <ng-container *ngIf="devices.length > 0">
                   <tr *ngFor="let device of devices; let i = index">
-                
-                  <th scope="row">1</th>
-                  <td>Ferari</td>
-                  <td>Helmi</td>
-                  <td>20 499 382</td>
-                  <td>2016-05-25</td>
-                  <td>2016-05-25</td>
-                  <td>28 DT</td>
-                  <td class="text-warning">En attent</td>
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{ device.brand }}</td>
+                  <td>{{ device.client['firstName'] }}</td>
+                  <td>{{ device.client['phone'] }}</td>
+                  <td>{{ device.validFrom | date : "yyyy-MM-dd" }}</td>
+                  <td>{{ device.validTo | date : "yyyy-MM-dd" }}</td>
+                  <td>{{ device.total  }} DT</td>
+                  <th [ngClass]="{'text-warning': device.status === 'En Attent', 'text-success': device.status !== 'En Attent'}">
+                    {{ device.status }}
+                  </th>
                   <td>
                     <div class="btn-group" role="group" aria-label="Actions">
                       <button type="button" class="btn btn-danger">
                         Delete
                       </button>
-                      <button type="button" class="btn btn-secondary">
+                      <button type="button" class="btn btn-secondary" (click)="navigateToDeviceDetails(device.device)">
                         View
                       </button>
                       <button type="button" class="btn btn-success" routerLink="/add-devicestatus">

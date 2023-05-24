@@ -25,9 +25,19 @@ export class RentedContractComponent implements OnInit {
       })
       .then((response) => {
         this.devices = response.data;
+        console.log(response.data);
       })
       .catch((error) => {
         this.errorMessage = error.response.data.message;
       });
+  }
+
+  navigateToDeviceDetails(device: any): void {
+    if(device!=null){
+      const queryParams = { ...device, user: JSON.stringify(device.user) };
+    this.router.navigate(['/view-device'], { queryParams });
+    }else{
+      this.router.navigate(['/error-404'])
+    }
   }
 }

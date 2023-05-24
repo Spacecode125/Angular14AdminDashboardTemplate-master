@@ -29,8 +29,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditDeviceComponent } from './components/edit-device/edit-device.component';
 import { ViewDeviceComponent } from './components/view-device/view-device.component';
-import { AddContractComponent } from './components/add-contract/add-contract.component';
-
 
 
 
@@ -64,7 +62,6 @@ import { AddContractComponent } from './components/add-contract/add-contract.com
     ListOffersComponent,
     EditDeviceComponent,
     ViewDeviceComponent,
-    AddContractComponent,
   ],
   imports: [
     BrowserModule,
