@@ -1,4 +1,6 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import axios from 'axios';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-purchase-contract',
@@ -6,14 +8,38 @@ import { Component, OnInit, ElementRef } from '@angular/core';
   styleUrls: ['./purchase-contract.component.css']
 })
 export class PurchaseContractComponent implements OnInit {
+  constructor(
+    private router: Router,
+  ) {}
 
-  constructor(private elementRef: ElementRef) { }
+  purchaseContracts: any[] = [];
+  errorMessage: string = '';
+  token: any;
 
   ngOnInit(): void {
-    var s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.src = '../assets/js/main.js';
-    this.elementRef.nativeElement.appendChild(s);
+    const url = 'http://localhost:3000/api/purchaseContract/salesman';
+    const output = window.localStorage.getItem('token');
+    this.token = output ? JSON.parse(output) : null;
+    axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${this.token}`
+      }
+    })
+      .then(response => {
+        this.purchaseContracts = response.data;
+      })
+      .catch(error => {
+        console.error(error);
+        this.errorMessage = 'Failed to fetch purchase contracts.';
+      });
   }
 
+  viewDevice(device: any): void {
+    const queryParams = { ...device, user: JSON.stringify(device.id) };
+    this.router.navigate(['/view-device'], { queryParams });
+  }
+
+  deleteContract(contractId: string): void {
+    console.log(`Delete contract with ID: ${contractId}`);
+  }
 }

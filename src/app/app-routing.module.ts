@@ -22,6 +22,7 @@ import { ViewDeviceComponent } from './components/view-device/view-device.compon
 import { Error404Component } from './error404/error404.component';
 import { ViewDeviceStatusComponent } from './offers/view-device-status/view-device-status.component';
 
+
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
