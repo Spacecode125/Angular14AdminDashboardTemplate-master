@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
 
 @Component({
@@ -11,7 +12,7 @@ export class ListOffersComponent implements OnInit {
   devices: any[] = [];
   errorMessage: String = '';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     const output = window.localStorage.getItem('token');
@@ -30,5 +31,17 @@ export class ListOffersComponent implements OnInit {
       .catch((error) => {
         this.errorMessage = error.response.data.message;
       });
+  }
+
+  navigateToDeviceScreen(type: any): void {
+    if (type === 'Rental') {
+      this.router.navigate(['/rentedcontract']);
+    } else if (type === 'Trade') {
+      this.router.navigate(['/tradedcontract']);
+    } else if (type === 'Purchase') {
+      this.router.navigate(['/purchasecontract']);
+    } else {
+      this.router.navigate(['/error-404']);
+    }
   }
 }

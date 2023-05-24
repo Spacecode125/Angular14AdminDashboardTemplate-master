@@ -1,11 +1,11 @@
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>List des offers</h1>
+    <h1>Offers list</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
         <li class="breadcrumb-item">Offer</li>
-        <li class="breadcrumb-item active">List offers</li>
+        <li class="breadcrumb-item active">Offers list</li>
       </ol>
     </nav>
   </div>
@@ -14,8 +14,8 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Èchange</h5>
-            <p>Ce sont tous les offers que les client ajoutés</p>
+            <h5 class="card-title">Offers</h5>
+            <p>These are all the offers that the customers have asked for</p>
             <table class="table">
               <thead class="table-dark">
                 <tr>
@@ -24,20 +24,20 @@
                   <th scope="col">Clinet name</th>
                   <th scope="col">Clinet phone</th>
                   <th scope="col">Date</th>
-                  <th scope="col"></th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <ng-container *ngIf="devices.length > 0">
                   <tr *ngFor="let device of devices; let i = index">
-                    <th scope="row">{{i+1}}</th>
-                    <td>Purchase</td>
-                    <td>{{device.client['firstName']}}</td>
-                    <td>{{device.client['lastName']}}</td>
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ device.type }}</td>
+                    <td>{{ device.client["firstName"] }}</td>
+                    <td>{{ device.client["lastName"] }}</td>
                     <td>2016-05-25</td>
                     <td>
                       <div class="btn-group" role="group" aria-label="Actions">
-                        <button type="button" class="btn btn-secondary">
+                        <button type="button" class="btn btn-secondary" (click)="navigateToDeviceScreen(device.type)">
                           See more
                         </button>
                       </div>

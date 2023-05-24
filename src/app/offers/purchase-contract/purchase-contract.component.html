@@ -1,11 +1,11 @@
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>List of Purchase Contracts</h1>
+    <h1>List of purchases</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-        <li class="breadcrumb-item">Tables</li>
-        <li class="breadcrumb-item active">Purchase Contracts</li>
+        <li class="breadcrumb-item">Offer</li>
+        <li class="breadcrumb-item active">Purchase</li>
       </ol>
     </nav>
   </div>
@@ -14,50 +14,77 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Purchase Contracts</h5>
-            <div class="d-flex align-items-center justify-content-between">
-              <p class="mr-auto">
-                ALL PURCHASE CONTRACTS !!!
-              </p>
-              <button
-                type="button"
-                class="btn btn-success"
-                routerLink="/add"
-              >
-                Add Purchase Contract
-              </button>
-            </div>
+            <h5 class="card-title">Purchase products</h5>
+            <p class="mr-auto">
+              These are all the purchase products that the customers have asked
+              for
+            </p>
             <table class="table">
               <thead class="table-dark">
                 <tr>
-                  <th scope="col">Device Brand</th>
-                  <th scope="col">Owner Phone</th>
-                  <th scope="col">Device Status</th>
+                  <th scope="col">#</th>
+                  <th scope="col">Product</th>
+                  <th scope="col">Client name</th>
+                  <th scope="col">Client Phone</th>
+                  <th scope="col">Status</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let contract of purchaseContracts">
-                  <td>{{ contract.device.brand }}</td>
-                  <td>{{ contract.owner.phone }}</td>
-                  <td>{{ contract.status }}</td>
-                  <td>
-                    <div class="btn-group" role="group" aria-label="Actions">
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        (click)="viewDevice(contract.device)"
-                      >
-                        View Device
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-danger"
-                        (click)="deleteContract(contract._id)"
-                      >
-                        Delete
-                      </button>
-                    </div>
+                <ng-container *ngIf="purchaseContracts.length > 0">
+                  <tr *ngFor="let contract of purchaseContracts; let i = index">
+                    <th>{{ i+1 }}</th>
+                    <td>{{ contract.device.brand }}</td>
+                    <td>{{ contract.client.phone }}</td>
+                    <td>{{ contract.client.phone }}</td>
+                    <th
+                      [ngClass]="{
+                        'text-warning': contract.status === 'Waiting',
+                        'text-success': contract.status !== 'Waiting'
+                      }"
+                    >
+                      {{ contract.status }}
+                    </th>
+                    <td>
+                      <div class="btn-group" role="group" aria-label="Actions">
+                        <button
+                          type="button"
+                          class="btn btn-success"
+                        >
+                          Accept
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-danger"
+                        >
+                          Decline
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          (click)="navigateToDeviceDetails(contract.device)"
+                        >
+                          View product
+                        </button>
+                        
+                      </div>
+                    </td>
+                  </tr>
+                </ng-container>
+                <tr
+                  *ngIf="errorMessage"
+                  class="text-center fw-bold text-danger"
+                >
+                  <td colspan="9">
+                    {{ errorMessage }}
+                  </td>
+                </tr>
+                <tr
+                  *ngIf="!purchaseContracts.length && !errorMessage"
+                  class="text-center"
+                >
+                  <td colspan="9">
+                    There is no product for this salesman at the moment
                   </td>
                 </tr>
               </tbody>

@@ -34,9 +34,13 @@ export class PurchaseContractComponent implements OnInit {
       });
   }
 
-  viewDevice(device: any): void {
-    const queryParams = { ...device, user: JSON.stringify(device.id) };
-    this.router.navigate(['/view-device'], { queryParams });
+  navigateToDeviceDetails(device: any): void {
+    if (device != null) {
+      const queryParams = { ...device, user: JSON.stringify(device.user) };
+      this.router.navigate(['/view-device'], { queryParams });
+    } else {
+      this.router.navigate(['/error-404']);
+    }
   }
 
   deleteContract(contractId: string): void {

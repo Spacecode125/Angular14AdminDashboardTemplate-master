@@ -1,11 +1,11 @@
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>List of devices</h1>
+    <h1>List of products</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-        <li class="breadcrumb-item">Tables</li>
-        <li class="breadcrumb-item active">devices</li>
+        <li class="breadcrumb-item">Services</li>
+        <li class="breadcrumb-item active">Products</li>
       </ol>
     </nav>
   </div>
@@ -14,17 +14,15 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Produits</h5>
+            <h5 class="card-title">Products</h5>
             <div class="d-flex align-items-center justify-content-between">
-              <p class="mr-auto">
-                All devices that you can See and Add
-              </p>
+              <p class="mr-auto">All the devices that you have Added</p>
               <button
                 type="button"
                 class="btn btn-success"
                 routerLink="/add-device"
               >
-                Add Device
+                Add Product
               </button>
             </div>
             <table class="table">
@@ -38,7 +36,7 @@
                   <th scope="col">Rental Price</th>
                   <th scope="col">Year of Manufacture</th>
                   <th scope="col">Created At</th>
-                  <th scope="col"></th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -97,13 +95,6 @@
                     There is no product for this salesman at the moment
                   </td>
                 </tr>
-                <!-- <ng-template #noDevices *ngIf="!errorMessage">
-                  <tr>
-                    <td colspan="9" class="text-center">
-                      There is no product to this salesman at the moment
-                    </td>
-                  </tr>
-                </ng-template> -->
               </tbody>
             </table>
           </div>

@@ -3,12 +3,12 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="page-header">
-          <h1>Dashboard</h1>
+          <h1>Product details</h1>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">
-                Details
+                Product details
               </li>
             </ol>
           </nav>
@@ -25,11 +25,11 @@
       <div class="card-body">
         <h5 class="fs-4 text-primary fw-bold">
           <i class="bi bi-tag-fill"></i> Brand:
-          <span class="fs-6 text-muted">{{ deviceDetailsObj.brand }}</span>
+          <span class="fs-4 text-muted">{{ deviceDetailsObj.brand }}</span>
         </h5>
         <h5 class="fs-4 text-dark fw-bold">
           Type:
-          <span class="fs-6 text-muted">{{ deviceDetailsObj.type }}</span>
+          <span class="fs-4 text-muted">{{ deviceDetailsObj.type }}</span>
         </h5>
         <h5 class="fs-4 text-dark fw-bold">
           Price:
@@ -47,22 +47,22 @@
         </h5>
         <h5 class="fs-4 text-dark fw-bold">
           <i class="bi bi-calendar3"></i> Year of Manufacture:
-          <span class="fs-6 text-muted">{{
+          <span class="fs-4 text-muted">{{
             deviceDetailsObj.yearOfManufacture | date : "yyyy-MM-dd"
           }}</span>
         </h5>
         <br />
         <h5 class="fs-4 text-dark fw-bold">
           <i class="bi bi-person-fill"></i> Product owner:
-          <span class="fs-6 text-muted"> {{ deviceDetailsObj.owner }}</span>
+          <span class="fs-4 text-muted"> {{ deviceDetailsObj.owner }}</span>
         </h5>
         <h5 class="fs-4 text-dark fw-bold">
           <i class="bi bi-telephone-fill"></i> Phone number:
-          <span class="fs-6 text-muted">+(216) {{ deviceDetailsObj.phone }}</span>
+          <span class="fs-4 text-muted">+(216) {{ deviceDetailsObj.phone }}</span>
         </h5>
         <h5 class="fs-4 text-dark fw-bold">
           <i class="bi bi-geo-alt-fill"></i> Address:
-          <span class="fs-6 text-muted">{{ deviceDetailsObj.address }}</span>
+          <span class="fs-4 text-muted">{{ deviceDetailsObj.address }}</span>
         </h5>
         <br />
         <h5 class="fs-4 text-dark fw-bold">Description:</h5>
