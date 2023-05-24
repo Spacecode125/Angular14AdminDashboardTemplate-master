@@ -9,17 +9,25 @@ import axios from 'axios';
 })
 export class ListOffersComponent implements OnInit {
   token: any;
+  user: any;
   devices: any[] = [];
-  errorMessage: String = '';
+  errorMessage: string = '';
+  url: string = '';
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
     const output = window.localStorage.getItem('token');
     this.token = output ? JSON.parse(output) : null;
-    const url = 'http://localhost:3000/api/offer/salesman';
+    const output2 = window.localStorage.getItem('user');
+    this.user = output2 ? JSON.parse(output2) : null;
+    if(this.user.role=='admin'){
+      this.url = 'http://localhost:3000/api/offer';
+    }else{
+      this.url = 'http://localhost:3000/api/offer/salesman';
+    }
     axios
-      .get(url, {
+      .get(this.url, {
         headers: {
           Authorization: `Bearer ${this.token}`,
         },

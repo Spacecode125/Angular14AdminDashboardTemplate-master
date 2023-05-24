@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios';
 import { ToastrService } from 'ngx-toastr';
@@ -11,19 +11,26 @@ import { ToastrService } from 'ngx-toastr';
 export class DevicesComponent implements OnInit {
   constructor(
     private router: Router,
-    private elementRef: ElementRef,
     private toastr: ToastrService
   ) {}
   devices: any[] = [];
   token: any;
+  user: any;
   errorMessage: string = '';
+  url: string = '';
 
   ngOnInit(): void {
     const output = window.localStorage.getItem('token');
     this.token = output ? JSON.parse(output) : null;
-    const url = 'http://localhost:3000/api/device/salesman';
+    const output2 = window.localStorage.getItem('user');
+    this.user = output2 ? JSON.parse(output2) : null;
+    if(this.user.role=='admin'){
+      this.url = 'http://localhost:3000/api/device';
+    }else{
+      this.url = 'http://localhost:3000/api/device/salesman';
+    }
     axios
-      .get(url, {
+      .get(this.url, {
         headers: {
           Authorization: `Bearer ${this.token}`,
         },
@@ -66,11 +73,5 @@ export class DevicesComponent implements OnInit {
     } else {
       this.router.navigate(['/error-404']);
     }
-  }
-  ngAfterViewInit(): void {
-    const s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.src = '../assets/js/main.js';
-    this.elementRef.nativeElement.appendChild(s);
   }
 }

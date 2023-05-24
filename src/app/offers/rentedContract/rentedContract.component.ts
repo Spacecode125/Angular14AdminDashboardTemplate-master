@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-rentedContract',
   templateUrl: './rentedContract.component.html',
@@ -8,18 +9,25 @@ import axios from 'axios';
 })
 export class RentedContractComponent implements OnInit {
   token: any;
+  user: any;
   rentedDevices: any[] = [];
-  errorMessage: String = '';
-  toastr: any;
+  errorMessage: string = '';
+  url: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     const output = window.localStorage.getItem('token');
     this.token = output ? JSON.parse(output) : null;
-    const url = 'http://localhost:3000/api/rentedContract/salesman';
+    const output2 = window.localStorage.getItem('user');
+    this.user = output2 ? JSON.parse(output2) : null;
+    if(this.user.role=='admin'){
+      this.url = 'http://localhost:3000/api/rentedContract';
+    }else{
+      this.url = 'http://localhost:3000/api/rentedContract/salesman';
+    }
     axios
-      .get(url, {
+      .get(this.url, {
         headers: {
           Authorization: `Bearer ${this.token}`,
         },

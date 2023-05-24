@@ -8,10 +8,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ViewDeviceComponent implements OnInit {
   deviceDetailsObj: any = {};
+  user: any;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    const output = window.localStorage.getItem('user');
+    this.user = output ? JSON.parse(output) : null;
     this.route.queryParams.subscribe((params) => {
       console.log(params)
       const user = params['user'] ? JSON.parse(params['user']) : null;

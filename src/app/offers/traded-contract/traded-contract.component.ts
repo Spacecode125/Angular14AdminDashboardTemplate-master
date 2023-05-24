@@ -12,14 +12,22 @@ export class TradedContractComponent implements OnInit {
   constructor(private router: Router) {}
   tradedContracts: any[] = [];
   errorMessage: string = '';
+  url: string = '';
   token: any;
+  user: any;
 
   ngOnInit(): void {
-    const url = 'http://localhost:3000/api/tradedContract/salesman';
     const output = window.localStorage.getItem('token');
     this.token = output ? JSON.parse(output) : null;
+    const output2 = window.localStorage.getItem('user');
+    this.user = output2 ? JSON.parse(output2) : null;
+    if(this.user.role=='admin'){
+      this.url = 'http://localhost:3000/api/tradedContract';
+    }else{
+      this.url = 'http://localhost:3000/api/tradedContract/salesman';
+    }
     axios
-      .get(url, {
+      .get(this.url, {
         headers: {
           Authorization: `Bearer ${this.token}`,
         },

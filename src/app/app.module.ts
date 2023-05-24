@@ -7,9 +7,6 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RentedContractComponent } from './offers/rentedContract/rentedContract.component';
-import { FormsElementsComponent } from './components/forms-elements/forms-elements.component';
-import { FormsLayoutsComponent } from './components/forms-layouts/forms-layouts.component';
-import { FormsEditorsComponent } from './components/forms-editors/forms-editors.component';
 import { UsersProfileComponent } from './pages/users-profile/users-profile.component';
 import { PagesContactComponent } from './pages/pages-contact/pages-contact.component';
 import { PagesRegisterComponent } from './pages/pages-register/pages-register.component';
@@ -18,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AddDeviceComponent } from './components/add-device/add-device.component';
 import { AddDevicestatusComponent } from './offers/devicestatus-add/devicestatus-add.component';
-import { AddRentedcontractComponent } from './offers/rentedContract-add/rentedContract-add.component';
+import { AddRentedcontractComponent } from './pages/rentedContract-add/rentedContract-add.component';
 import { AdminComponent } from './admin/admin.component';
 import { DevicesComponent } from './components/devices/devices.component';
 import { ContractsComponent } from './components/contracts/contracts.component';
@@ -46,9 +43,6 @@ import { ViewDeviceStatusComponent } from './offers/view-device-status/view-devi
     SidebarComponent,
     DashboardComponent,
     RentedContractComponent,
-    FormsElementsComponent,
-    FormsLayoutsComponent,
-    FormsEditorsComponent,
     UsersProfileComponent,
     PagesContactComponent,
     PagesRegisterComponent,
