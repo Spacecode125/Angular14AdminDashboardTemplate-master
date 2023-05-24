@@ -31,52 +31,71 @@
                 </tr>
               </thead>
               <tbody>
-                <ng-container *ngIf="devices.length > 0">
-                  <tr *ngFor="let device of devices; let i = index">
-                  <th scope="row">{{i+1}}</th>
-                  <td>{{ device.brand }}</td>
-                  <td>{{ device.client['firstName'] }}</td>
-                  <td>{{ device.client['phone'] }}</td>
-                  <td>{{ device.validFrom | date : "yyyy-MM-dd" }}</td>
-                  <td>{{ device.validTo | date : "yyyy-MM-dd" }}</td>
-                  <td>{{ device.total  }} DT</td>
-                  <th [ngClass]="{'text-warning': device.status === 'En Attent', 'text-success': device.status !== 'En Attent'}">
-                    {{ device.status }}
-                  </th>
-                  <td>
-                    <div class="btn-group" role="group" aria-label="Actions">
-                      <button type="button" class="btn btn-danger">
-                        Delete
-                      </button>
-                      <button type="button" class="btn btn-secondary" (click)="navigateToDeviceDetails(device.device)">
-                        View
-                      </button>
-                      <button type="button" class="btn btn-success" routerLink="/add-devicestatus">
-                        Add status
-                      </button>
-                      <button type="button" class="btn btn-secondary">
-                        View status
-                      </button>
-                    </div>
+                <ng-container *ngIf="rentedDevices.length > 0">
+                  <tr *ngFor="let rented of rentedDevices; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ rented.brand }}</td>
+                    <td>{{ rented.client["firstName"] }}</td>
+                    <td>{{ rented.client["phone"] }}</td>
+                    <td>{{ rented.validFrom | date : "yyyy-MM-dd" }}</td>
+                    <td>{{ rented.validTo | date : "yyyy-MM-dd" }}</td>
+                    <td>{{ rented.total }} DT</td>
+                    <th
+                      [ngClass]="{
+                        'text-warning': rented.status === 'Waiting',
+                        'text-success': rented.status !== 'Waiting'
+                      }"
+                    >
+                      {{ rented.status }}
+                    </th>
+                    <td>
+                      <div class="btn-group" role="group" aria-label="Actions">
+                        <button
+                          type="button"
+                          class="btn btn-danger"
+                          (click)="deleteRentedDevice(rented._id)"
+                        >
+                          Delete
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          (click)="navigateToDeviceDetails(rented.device)"
+                        >
+                          View
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-success"
+                          (click)="navigateToAddDeviceStatus(rented._id)"
+                        >
+                          Add status
+                        </button>
+                        <button type="button" class="btn btn-secondary"
+                        (click)="navigateToViewDeviceStatus('646d7d62072b834d0e5e6dbd')"
+                        >
+                          View status
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </ng-container>
+                <tr
+                  *ngIf="errorMessage"
+                  class="text-center fw-bold text-danger"
+                >
+                  <td colspan="9">
+                    {{ errorMessage }}
                   </td>
                 </tr>
-              </ng-container>
-              <tr
-                *ngIf="errorMessage"
-                class="text-center fw-bold text-danger"
-              >
-                <td colspan="9">
-                  {{ errorMessage }}
-                </td>
-              </tr>
-              <tr
-                *ngIf="!devices.length && !errorMessage"
-                class="text-center"
-              >
-                <td colspan="9">
-                  There is no product for this salesman at the moment
-                </td>
-              </tr>
+                <tr
+                  *ngIf="!rentedDevices.length && !errorMessage"
+                  class="text-center"
+                >
+                  <td colspan="9">
+                    There is no product for this salesman at the moment
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

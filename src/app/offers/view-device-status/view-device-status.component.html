@@ -1,0 +1,75 @@
+<main id="main" class="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h1>Device status</h1>
+          
+            <div class="d-flex align-items-center justify-content-between">
+                <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li class="breadcrumb-item">Offer</li>
+                <li class="breadcrumb-item">
+                  <a routerLink="/rentedcontract">Rental</a>
+                </li>
+                <li class="breadcrumb-item active">Device status details</li>
+              </ol>
+            </nav>
+              <button
+                type="button"
+                class="btn btn-primary"
+                routerLink="/add-devicestatus"
+              >
+                Edit device status
+              </button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label class="col-sm-3 col-form-label fs-4 text-dark fw-bold">
+        Image before rent:</label
+      >
+      <div class="col-sm-1">
+        <img
+          [src]="
+            'http://localhost:3000/api/' +
+            deviceStatusDetailsObj.pictureBeforeRent
+          "
+          alt="Device"
+          class="img-fluid"
+          style="height: 400px; object-fit: contain; max-width: 400px"
+        />
+      </div>
+    </div>
+    <h5 class="fs-4 text-dark fw-bold">
+      Description before rent:
+      <span class="fs-4 text-muted-break">{{
+        deviceStatusDetailsObj.descriptionBeforeRent
+      }}</span>
+    </h5>
+    <div class="row mb-3">
+      <label class="col-sm-3 col-form-label fs-4 text-dark fw-bold">
+        Image after rent:</label
+      >
+      <div class="col-sm-1">
+        <img
+          [src]="
+            'http://localhost:3000/api/' +
+            deviceStatusDetailsObj.pictureAfterRent
+          "
+          alt="Device"
+          class="img-fluid"
+          style="height: 400px; object-fit: contain; max-width: 400px"
+        />
+      </div>
+    </div>
+    <h5 class="fs-4 text-dark fw-bold">
+      Description after rent:
+      <span class="fs-4 text-muted-break">{{
+        deviceStatusDetailsObj.descriptionAfterRent
+      }}</span>
+    </h5>
+  </div>
+</main>

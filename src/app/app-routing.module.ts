@@ -20,6 +20,7 @@ import { DevicesComponent } from './components/devices/devices.component';
 import { EditDeviceComponent } from './components/edit-device/edit-device.component';
 import { ViewDeviceComponent } from './components/view-device/view-device.component';
 import { Error404Component } from './error404/error404.component';
+import { ViewDeviceStatusComponent } from './offers/view-device-status/view-device-status.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -43,6 +44,7 @@ const routes: Routes = [
   { path: 'edit-device', component: EditDeviceComponent },
   { path: 'view-device', component: ViewDeviceComponent },
   { path: 'error-404', component: Error404Component },
+  { path: 'view-deviceStatus', component: ViewDeviceStatusComponent },
 ];
 
 @NgModule({
