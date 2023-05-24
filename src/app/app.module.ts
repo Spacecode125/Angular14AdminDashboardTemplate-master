@@ -29,6 +29,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditDeviceComponent } from './components/edit-device/edit-device.component';
 import { ViewDeviceComponent } from './components/view-device/view-device.component';
+import { Error404Component } from './error404/error404.component';
 
 
 
@@ -62,6 +63,7 @@ import { ViewDeviceComponent } from './components/view-device/view-device.compon
     ListOffersComponent,
     EditDeviceComponent,
     ViewDeviceComponent,
+    Error404Component,
   ],
   imports: [
     BrowserModule,

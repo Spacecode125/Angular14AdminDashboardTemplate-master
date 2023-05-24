@@ -19,6 +19,7 @@ import { ContractsComponent } from './components/contracts/contracts.component';
 import { DevicesComponent } from './components/devices/devices.component';
 import { EditDeviceComponent } from './components/edit-device/edit-device.component';
 import { ViewDeviceComponent } from './components/view-device/view-device.component';
+import { Error404Component } from './error404/error404.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'rentedcontract-add', component: AddRentedcontractComponent },
   { path: 'edit-device', component: EditDeviceComponent },
   { path: 'view-device', component: ViewDeviceComponent },
+  { path: 'error-404', component: Error404Component },
 ];
 
 @NgModule({
