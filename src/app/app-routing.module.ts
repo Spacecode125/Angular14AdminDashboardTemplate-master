@@ -19,6 +19,8 @@ import { ViewDeviceComponent } from './components/view-device/view-device.compon
 import { Error404Component } from './error404/error404.component';
 import { ViewDeviceStatusComponent } from './offers/view-device-status/view-device-status.component';
 import { AddContractComponent } from './components/add-contract/add-contract.component';
+import { AddUserComponent } from './admin/add-user/add-user.component';
+import { DeleteUserComponent } from './admin/delete-user/delete-user.component';
 
 
 const routes: Routes = [
@@ -42,6 +44,8 @@ const routes: Routes = [
   { path: 'error-404', component: Error404Component },
   { path: 'view-deviceStatus', component: ViewDeviceStatusComponent },
   { path: 'add-contract', component: AddContractComponent },
+  { path: 'add-user', component: AddUserComponent },
+  { path: 'delete-user', component: DeleteUserComponent },
 ];
 
 @NgModule({

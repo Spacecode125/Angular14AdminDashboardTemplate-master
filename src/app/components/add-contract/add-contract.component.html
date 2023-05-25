@@ -1,1 +1,65 @@
-<p>add-contract works!</p>
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Add Contract</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item">Services</li>
+        <li class="breadcrumb-item active">Contract</li>
+      </ol>
+    </nav>
+  </div>
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Add Contract</h5>
+            <form class="row g-3 needs-validation" novalidate>
+              <div class="row mb-3">
+                <label for="reference" class="col-sm-2 col-form-label">Reference</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="reference" name="reference" required />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="signedbyOwner" class="col-sm-2 col-form-label">Signed by Owner</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="signedbyOwner" name="signedbyOwner" required />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="signedbyPartner" class="col-sm-2 col-form-label">Signed by Partner</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="signedbyPartner" name="signedbyPartner" required />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="contractType" class="col-sm-2 col-form-label">Contract Type</label>
+                <div class="col-sm-10">
+                  <select class="form-select" id="contractType" name="contractType" required (change)="onContractTypeChange($event)">
+
+                    <option value="">Select a contract type</option>
+                    <option value="RentedContract">Rented Contract</option>
+                    <option value="TradedContract">Traded Contract</option>
+                    <option value="PurchaseContract">Purchase Contract</option>
+                  </select>
+                </div>
+              </div>
+
+
+   
+
+
+              <div class="row mb-3">
+                <div class="col-sm-10 offset-sm-2">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

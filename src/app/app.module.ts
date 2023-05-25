@@ -28,6 +28,8 @@ import { EditDeviceComponent } from './components/edit-device/edit-device.compon
 import { ViewDeviceComponent } from './components/view-device/view-device.component';
 import { Error404Component } from './error404/error404.component';
 import { ViewDeviceStatusComponent } from './offers/view-device-status/view-device-status.component';
+import { AddUserComponent } from './admin/add-user/add-user.component';
+import { DeleteUserComponent } from './admin/delete-user/delete-user.component';
 
 
 
@@ -60,6 +62,8 @@ import { ViewDeviceStatusComponent } from './offers/view-device-status/view-devi
     ViewDeviceComponent,
     Error404Component,
     ViewDeviceStatusComponent,
+    AddUserComponent,
+    DeleteUserComponent,
   ],
   imports: [
     BrowserModule,
