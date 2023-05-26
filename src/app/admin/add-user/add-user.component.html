@@ -1,77 +1,133 @@
-<main>
-  <div class="container">
-    <section class="section add-user min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-            <div class="card mb-3">
-              <div class="card-body">
-                <div class="pt-4 pb-2">
-                  <h5 class="card-title text-center pb-0 fs-4">Add User</h5>
-                  <form class="row g-3 needs-validation" novalidate>
-                    <div class="col-12">
-                      <label for="email" class="form-label">Email</label>
-                      <input type="text" name="email" class="form-control" id="email"
-                        [(ngModel)]="userObj.email" required>
-                      <div class="invalid-feedback">Please enter your email!</div>
-                    </div>
-                    <div class="col-12">
-                      <label for="firstName" class="form-label">First Name</label>
-                      <input type="text" name="firstName" class="form-control" id="firstName"
-                        [(ngModel)]="userObj.firstName" required>
-                      <div class="invalid-feedback">Please enter your first name!</div>
-                    </div>
-                    <div class="col-12">
-                      <label for="lastName" class="form-label">Last Name</label>
-                      <input type="text" name="lastName" class="form-control" id="lastName"
-                        [(ngModel)]="userObj.lastName" required>
-                      <div class="invalid-feedback">Please enter your last name!</div>
-                    </div>
-                    <div class="col-12">
-                      <label for="role" class="form-label">Role</label>
-                      <select class="form-select" id="role" name="role" [(ngModel)]="userObj.role" required>
-                        <option value="">Select a role</option>
-                        <option value="user">User</option>
-                        <option value="salesman">Salesman</option>
-                      </select>
-                      <div class="invalid-feedback">Please select a role!</div>
-                    </div>
-                    <div class="col-12">
-                      <label for="address" class="form-label">Address</label>
-                      <input type="text" name="address" class="form-control" id="address"
-                        [(ngModel)]="userObj.address" required>
-                      <div class="invalid-feedback">Please enter your address!</div>
-                    </div>
-                    <div class="col-12">
-                      <label for="phone" class="form-label">Phone</label>
-                      <input type="text" name="phone" class="form-control" id="phone"
-                        [(ngModel)]="userObj.phone" required>
-                      <div class="invalid-feedback">Please enter your phone number!</div>
-                    </div>
-                    <div class="col-12">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="password"
-                        [(ngModel)]="userObj.password" required>
-                      <div class="invalid-feedback">Please enter your password!</div>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                        <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and
-                            conditions</a></label>
-                        <div class="invalid-feedback">You must agree before submitting.</div>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit" (click)="onAddUser()">Add User</button>
-                    </div>
-                  </form>
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Add User</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item">Services</li>
+        <li class="breadcrumb-item active">User</li>
+      </ol>
+    </nav>
+  </div>
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Add User</h5>
+            <form class="row g-3 needs-validation" novalidate>
+              <div class="col-sm-10">
+                <label for="email" class="col-sm-2 col-form-label">Email:</label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    [(ngModel)]="userObj.email"
+                    (ngModelChange)="userObj.email = $event"
+                    required
+                  />
                 </div>
               </div>
-            </div>
+
+              <!-- Add the following lines for other fields -->
+              <div class="col-sm-10">
+                <label for="firstName" class="col-sm-2 col-form-label">First Name:</label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    name="firstName"
+                    [(ngModel)]="userObj.firstName"
+                    (ngModelChange)="userObj.firstName = $event"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="col-sm-10">
+                <label for="lastName" class="col-sm-2 col-form-label">Last Name:</label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    name="lastName"
+                    [(ngModel)]="userObj.lastName"
+                    (ngModelChange)="userObj.lastName = $event"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="col-sm-10">
+                <label for="role" class="col-sm-2 col-form-label">Role:</label>
+                <div class="col-sm-10">
+                  <select
+                    class="form-select"
+                    id="role"
+                    name="role"
+                    [(ngModel)]="userObj.role"
+                    (ngModelChange)="userObj.role = $event"
+                    required
+                  >
+                    <option value="">Select a role</option>
+                    <option value="user">User</option>
+                    <option value="salesman">Salesman</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-sm-10">
+                <label for="phone" class="col-sm-2 col-form-label">Phone:</label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="phone"
+                    name="phone"
+                    [(ngModel)]="userObj.phone"
+                    (ngModelChange)="userObj.phone = $event"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="col-sm-10">
+                <label for="address" class="col-sm-2 col-form-label">Address:</label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="address"
+                    name="address"
+                    [(ngModel)]="userObj.address"
+                    (ngModelChange)="userObj.address = $event"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-sm-10 offset-sm-2">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="acceptTerms" name="acceptTerms" required />
+                    <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                    <div class="invalid-feedback">You must agree before submitting.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-10 offset-sm-2">
+                  <button type="submit" class="btn btn-primary" (click)="onAddUser()">Add User</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </main>

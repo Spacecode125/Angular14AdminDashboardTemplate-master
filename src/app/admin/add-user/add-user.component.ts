@@ -13,7 +13,7 @@ export class AddUserComponent {
     email: '',
     firstName: '',
     lastName: '',
-    role: 'user' || 'salesman',
+    role: '',
     phone: '',
     address: '',
     password: ''
@@ -30,7 +30,7 @@ export class AddUserComponent {
       .then(response => {
         console.log(response);
         this.router.navigate(['/']); // Navigate to the desired route after adding the user
-        this.toastr.success('User successfully added in your database');
+        this.toastr.success('User successfully added to your database');
       })
       .catch(error => {
         this.toastr.error(error.response.data.message);

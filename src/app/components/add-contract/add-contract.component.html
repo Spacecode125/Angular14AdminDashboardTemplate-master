@@ -19,41 +19,30 @@
               <div class="row mb-3">
                 <label for="reference" class="col-sm-2 col-form-label">Reference</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="reference" name="reference" required />
+                  <input type="text" class="form-control" id="reference" name="reference"
+                     />
                 </div>
-              </div>
-              <div class="row mb-3">
-                <label for="signedbyOwner" class="col-sm-2 col-form-label">Signed by Owner</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="signedbyOwner" name="signedbyOwner" required />
-                </div>
+                <div class="invalid-feedback">Please enter the reference</div>
               </div>
               <div class="row mb-3">
                 <label for="signedbyPartner" class="col-sm-2 col-form-label">Signed by Partner</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="signedbyPartner" name="signedbyPartner" required />
+                  <input type="text" class="form-control" id="signedbyPartner" name="signedbyPartner"
+                    required />
                 </div>
               </div>
               <div class="row mb-3">
-                <label for="contractType" class="col-sm-2 col-form-label">Contract Type</label>
+                <label for="purchaseContractId" class="col-sm-2 col-form-label">Purchase Contract ID</label>
                 <div class="col-sm-10">
-                  <select class="form-select" id="contractType" name="contractType" required (change)="onContractTypeChange($event)">
-
-                    <option value="">Select a contract type</option>
-                    <option value="RentedContract">Rented Contract</option>
-                    <option value="TradedContract">Traded Contract</option>
-                    <option value="PurchaseContract">Purchase Contract</option>
-                  </select>
+                  <input type="text" class="form-control" id="purchaseContractId" name="purchaseContractId"
+                     required />
                 </div>
               </div>
 
-
-   
-
-
               <div class="row mb-3">
-                <div class="col-sm-10 offset-sm-2">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                <label class="col-sm-2 col-form-label">Add Contract</label>
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-primary" (click)="addContract()">Add Contract</button>
                 </div>
               </div>
             </form>

@@ -1,50 +1,60 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-delete-user',
   templateUrl: './delete-user.component.html',
-  styleUrls: ['./delete-user.component.css']
+  styleUrls: ['./delete-user.component.css'],
 })
 export class DeleteUserComponent implements OnInit {
+  constructor(
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   users: any[] = [];
-
-  constructor() { }
+  token: any;
+  errorMessage: string = '';
+  url: string = 'http://localhost:3000/api/user'; // Update the URL
 
   ngOnInit(): void {
-    this.getUsers();
-  }
+    const output = window.localStorage.getItem('token');
+    this.token = output ? JSON.parse(output) : null;
 
-  getUsers(): void {
-    const token = localStorage.getItem('token'); // Retrieve the bearer token from local storage
-    axios.get('http://localhost:3000/api/users', {
-      headers: {
-        Authorization: `Bearer ${token}` // Set the Authorization header with the bearer token
-      }
-    })
+    axios
+      .get(this.url, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
       .then((response) => {
         this.users = response.data;
       })
       .catch((error) => {
-        console.log(error);
+        this.errorMessage = error.response.data.message;
       });
   }
 
-  deleteUser(userId: string): void {
-    const token = localStorage.getItem('token'); // Retrieve the bearer token from local storage
-    axios.delete(`http://localhost:3000/api/users/${userId}`, {
-      headers: {
-        Authorization: `Bearer ${token}` // Set the Authorization header with the bearer token
-      }
-    })
-      .then(() => {
-        console.log('User deleted successfully');
-        this.getUsers(); // Refresh the user list after deletion
+  deleteUser(id: any): void {
+    const url = `http://localhost:3000/api/user/${id}`;
+    axios
+      .delete(url, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
+      .then((response) => {
+        this.router.navigateByUrl('/delete-user').then(() => {
+          setTimeout(() => {
+            location.reload();
+          }, 1000);
+        });
+        this.toastr.success('User deleted successfully');
       })
       .catch((error) => {
-        console.log(error);
+        this.toastr.error(error.response.data.message);
       });
   }
-
 }
