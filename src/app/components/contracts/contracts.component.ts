@@ -6,25 +6,26 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-contracts',
   templateUrl: './contracts.component.html',
-  styleUrls: ['./contracts.component.css']
+  styleUrls: ['./contracts.component.css'],
 })
 export class ContractsComponent implements OnInit {
   token: any;
   user: any;
-  contracts: any[]=[];
+  contracts: any[] = [];
+  contractType: any = {};
   errorMessage: string = '';
   url: string = '';
 
-  constructor(private router: Router,private toastr: ToastrService) { }
+  constructor(private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     const output = window.localStorage.getItem('token');
     this.token = output ? JSON.parse(output) : null;
     const output2 = window.localStorage.getItem('user');
     this.user = output2 ? JSON.parse(output2) : null;
-    if(this.user.role=='admin'){
+    if (this.user.role == 'admin') {
       this.url = 'http://localhost:3000/api/contract';
-    }else{
+    } else {
       this.url = 'http://localhost:3000/api/contract/salesman';
     }
     axios
@@ -35,22 +36,33 @@ export class ContractsComponent implements OnInit {
       })
       .then((response) => {
         this.contracts = response.data;
+        console.log(this.contracts);
       })
       .catch((error) => {
         this.errorMessage = error.response.data.message;
       });
   }
 
-  navigateToDeviceDetails(device: any): void {
-    if (device != null) {
-      const queryParams = { ...device, user: JSON.stringify(device.user) };
+  navigateToDeviceDetails(contract: any): void {
+    if (contract != null) {
+      if (contract.type == 'Rental') {
+        this.contractType = contract.RentedContract.device;
+      } else if (contract.type == 'Trade') {
+        this.contractType = contract.TradedContract.tradedDevice;
+      } else if (contract.type == 'Purchase') {
+        this.contractType = contract.PurchaseContract.device;
+      }
+      const queryParams = {
+        ...this.contractType,
+        user: JSON.stringify(contract.signedbyOwner),
+      };
       this.router.navigate(['/view-device'], { queryParams });
     } else {
       this.router.navigate(['/error-404']);
     }
   }
 
-  deleteContract(contractId:any): void{
+  deleteContract(contractId: any): void {
     const url = `http://localhost:3000/api/contract/${contractId}`;
     axios
       .delete(url, {
@@ -70,5 +82,4 @@ export class ContractsComponent implements OnInit {
         this.toastr.error(error.response.data.message);
       });
   }
-
 }

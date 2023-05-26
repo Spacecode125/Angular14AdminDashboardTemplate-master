@@ -1,70 +1,114 @@
 <main id="main" class="main">
-    <div class="pagetitle">
-       <h1>Contact</h1>
-       <nav>
-          <ol class="breadcrumb">
-             <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-             <li class="breadcrumb-item">Pages</li>
-             <li class="breadcrumb-item active">Contact</li>
-          </ol>
-       </nav>
+  <div class="pagetitle">
+    <h1>Contact</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item">Pages</li>
+        <li class="breadcrumb-item active">Contact</li>
+      </ol>
+    </nav>
+  </div>
+  <section class="section contact">
+    <div class="row gy-4">
+      <div class="col-xl-6">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="info-box card">
+              <i class="bi bi-geo-alt"></i>
+              <h3>Address</h3>
+              <p>Tunisia,<br />Nabeul</p>
+              <p>30 Rue de Sousse 8000 Nabeul <br /></p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="info-box card">
+              <i class="bi bi-telephone"></i>
+              <h3>Call Us</h3>
+              <p>Contact us at +49 (0) 7193 93 12-0 for all questions</p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="info-box card">
+              <i class="bi bi-envelope"></i>
+              <h3>Email Us</h3>
+              <p>
+                <a href="https://l-mobile.com/en/interactive/contact/"></a>
+                <br /><a href="https://l-mobile.com/en/interactive/contact/"
+                  >info@l-mobile.com</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="info-box card">
+              <i class="bi bi-clock"></i>
+              <h3>Open Hours</h3>
+              <p>Monday - Friday<br />9:00AM - 05:00PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6">
+        <div class="card p-4">
+          <form class="php-email-form needs-validation" novalidate>
+            <div class="row gy-4">
+              <div class="col-md-6">
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  placeholder="Your Name"
+                  [ngModel]="contactObj.name"
+                  (ngModelChange)="contactObj.name = $event"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  placeholder="Your Email"
+                  [ngModel]="contactObj.email"
+                  (ngModelChange)="contactObj.email = $event"
+                  required
+                />
+              </div>
+              <div class="col-md-12">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="subject"
+                  placeholder="Subject"
+                  [ngModel]="contactObj.subject"
+                  (ngModelChange)="contactObj.subject = $event"
+                  required
+                />
+              </div>
+              <div class="col-md-12">
+                <textarea
+                  class="form-control"
+                  name="message"
+                  rows="6"
+                  placeholder="Message"
+                  [ngModel]="contactObj.message"
+                  (ngModelChange)="contactObj.message = $event"
+                  required
+                ></textarea>
+              </div>
+              <div class="col-md-12 text-center">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">
+                  Your message has been sent. Thank you!
+                </div>
+                <button type="submit" (click)="sendEmail()">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    <section class="section contact">
-       <div class="row gy-4">
-          <div class="col-xl-6">
-             <div class="row">
-                <div class="col-lg-6">
-                   <div class="info-box card">
-                      <i class="bi bi-geo-alt"></i>
-                      <h3>Address</h3>
-                      <p>Tunisia,<br>Nabeul</p>
-                      <p>30 Rue de Sousse
-                        8000 Nabeul <br></p>
-                   </div>
-                </div>
-                <div class="col-lg-6">
-                   <div class="info-box card">
-                      <i class="bi bi-telephone"></i>
-                      <h3>Call Us</h3>
-                      <p>Contact us at
-                      +49 (0) 7193 93 12-0 for all questions</p>
-                   </div>
-                </div>
-                <div class="col-lg-6">
-                   <div class="info-box card">
-                      <i class="bi bi-envelope"></i>
-                      <h3>Email Us</h3>
-                      <p><a href="https://l-mobile.com/en/interactive/contact/" ></a>
-                      <br><a href="https://l-mobile.com/en/interactive/contact/" >info@l-mobile.com</a></p>
-                   </div>
-                </div>
-                <div class="col-lg-6">
-                   <div class="info-box card">
-                      <i class="bi bi-clock"></i>
-                      <h3>Open Hours</h3>
-                      <p>Monday - Friday<br>9:00AM - 05:00PM</p>
-                   </div>
-                </div>
-             </div>
-          </div>
-          <div class="col-xl-6">
-             <div class="card p-4">
-                <form action="forms/contact.php" method="post" class="php-email-form">
-                   <div class="row gy-4">
-                      <div class="col-md-6"> <input type="text" name="name" class="form-control" placeholder="Your Name" required></div>
-                      <div class="col-md-6 "> <input type="email" class="form-control" name="email" placeholder="Your Email" required></div>
-                      <div class="col-md-12"> <input type="text" class="form-control" name="subject" placeholder="Subject" required></div>
-                      <div class="col-md-12"><textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea></div>
-                      <div class="col-md-12 text-center">
-                         <div class="loading">Loading</div>
-                         <div class="error-message"></div>
-                         <div class="sent-message">Your message has been sent. Thank you!</div>
-                         <button type="submit">Send Message</button>
-                      </div>
-                   </div>
-                </form>
-             </div>
-          </div>
-       </div>
-    </section>
- </main>
+  </section>
+</main>

@@ -74,17 +74,24 @@
         <br />
         <h5 class="fs-4 text-dark fw-bold">Offers:</h5>
         <div>
-          <button type="button" class="btn btn-success">Purchace</button>
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="purchaseButton(deviceDetailsObj.deviceId)"
+          >
+            Purchace
+          </button>
           <button
             type="button"
             class="btn btn-warning"
-            routerLink="/rentedcontract-add"
+            (click)="navigateToAddRentedContract(deviceDetailsObj.deviceId)"
           >
             Rental
           </button>
           <button
             type="button"
             class="btn btn-secondary"
+            (click)="navigateToAddTradedContract(deviceDetailsObj.deviceId)"
             *ngIf="user.role != 'user'"
           >
             Trade

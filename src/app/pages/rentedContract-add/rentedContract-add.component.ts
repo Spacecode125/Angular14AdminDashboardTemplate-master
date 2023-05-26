@@ -6,46 +6,54 @@ import axios from 'axios';
 @Component({
   selector: 'app-rentedContract-add',
   templateUrl: './rentedContract-add.component.html',
-  styleUrls: ['./rentedContract-add.component.css']
+  styleUrls: ['./rentedContract-add.component.css'],
 })
 export class AddRentedcontractComponent {
-  validFrom: any;
-  validTo: any;
-  deviceId: any;
+  deviceId: any = {};
+  token: any;
+  rentedContractObj: any = {
+    validFrom: '',
+    validTo: '',
+  };
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService
-  ) {
-    this.route.queryParams.subscribe(params => {
+    private toastr: ToastrService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    const output = window.localStorage.getItem('token');
+    this.token = output ? JSON.parse(output) : null;
+    this.route.queryParams.subscribe((params) => {
       this.deviceId = params['deviceId'];
     });
+    console.log(this.deviceId);
   }
 
-  validFromChange(value: Date): void {
-    this.validFrom = value;
-  }
-
-  validToChange(value: Date): void {
-    this.validTo = value;
-  }
-
-  onSubmit(): void {
-    const formData = {
-      validFrom: this.validFrom,
-      validTo: this.validTo
-    };
-
-    axios.post(`/api/rentedcontract/${this.deviceId}`, formData)
+  addRentedContract(): void {
+    const url = `http://localhost:3000/api/rentedContract/${this.deviceId}`;
+    const { validFrom, validTo } = this.rentedContractObj;
+    axios
+      .post(
+        url,
+        { validFrom, validTo },
+        {
+          headers: {
+            Authorization: `Bearer ${this.token}`,
+          },
+        }
+      )
       .then((response) => {
         console.log(response.data);
-        this.toastr.success('Rented contract submitted successfully!', 'Success');
+        this.toastr.success(
+          'Rental request sent to the owner wait for his response'
+        );
         this.router.navigate(['/dashboard']);
       })
       .catch((error) => {
         console.error(error);
-        this.toastr.error('An error occurred while submitting the rented contract.', 'Error');
+        this.toastr.error(error.response.data.message);
       });
   }
 }

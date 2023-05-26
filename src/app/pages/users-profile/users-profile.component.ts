@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import axios from 'axios';
 import { ToastrService } from 'ngx-toastr';
+import { NgForm } from '@angular/forms';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-users-profile',
@@ -14,6 +16,11 @@ export class UsersProfileComponent implements OnInit {
   token: any;
   selectedImage: any;
   profileObj: any;
+  passwordObj: any = {
+    oldPassword: '',
+    newPassword: '',
+    renewPassword: '',
+  };
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -65,7 +72,6 @@ export class UsersProfileComponent implements OnInit {
             location.reload();
           }, 1000);
         });
-        
       })
       .catch((error) => {
         this.toastr.error(error.response.data.message);
@@ -89,5 +95,34 @@ export class UsersProfileComponent implements OnInit {
       address: this.user.address,
       about: this.user.about,
     };
+  }
+  changePassword(): void {
+    const url = 'http://localhost:3000/api/user/updatePass';
+    const { oldPassword, newPassword, renewPassword } = this.passwordObj;
+    if (newPassword !== renewPassword) {
+      this.toastr.error("The password doesn't match the new password");
+    } else {
+      axios
+        .put(
+          url,
+          { oldPassword, newPassword },
+          {
+            headers: {
+              Authorization: `Bearer ${this.token}`,
+            },
+          }
+        )
+        .then((response) => {
+          this.toastr.success('Password successfully updated');
+          this.passwordObj = {
+            oldPassword: '',
+            newPassword: '',
+            renewPassword: '',
+          };
+        })
+        .catch((error) => {
+          this.toastr.error(error.response.data.message);
+        });
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-traded-contract',
@@ -8,8 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./traded-contract.component.css'],
 })
 export class TradedContractComponent implements OnInit {
-  toastr: any;
-  constructor(private router: Router) {}
+  constructor(private router: Router, private toastr: ToastrService) {}
   tradedContracts: any[] = [];
   errorMessage: string = '';
   url: string = '';
@@ -51,7 +51,7 @@ export class TradedContractComponent implements OnInit {
         },
       })
       .then((response) => {
-        this.router.navigateByUrl('/devices').then(() => {
+        this.router.navigateByUrl('/tradedcontract').then(() => {
           setTimeout(() => {
             location.reload();
           }, 1000);

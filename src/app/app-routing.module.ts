@@ -21,6 +21,8 @@ import { ViewDeviceStatusComponent } from './offers/view-device-status/view-devi
 import { AddContractComponent } from './components/add-contract/add-contract.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { DeleteUserComponent } from './admin/delete-user/delete-user.component';
+import { TradedContractAddComponent } from './pages/tradedContract-add/traded-contract-add.component';
+import { GetContactsComponent } from './pages/get-contacts/get-contacts.component';
 
 
 const routes: Routes = [
@@ -46,6 +48,8 @@ const routes: Routes = [
   { path: 'add-contract', component: AddContractComponent },
   { path: 'add-user', component: AddUserComponent },
   { path: 'delete-user', component: DeleteUserComponent },
+  { path: 'add-tradedContract', component: TradedContractAddComponent },
+  { path: 'get-contacts', component: GetContactsComponent },
 ];
 
 @NgModule({

@@ -50,12 +50,14 @@
                         <button
                           type="button"
                           class="btn btn-success"
+                          (click)="acceptPurchase(contract._id)"
                         >
                           Accept
                         </button>
                         <button
                           type="button"
                           class="btn btn-danger"
+                          (click)="declinePurchase(contract._id)"
                         >
                           Decline
                         </button>

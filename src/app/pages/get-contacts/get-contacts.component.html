@@ -1,0 +1,68 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>List of mails</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item active">All mails</li>
+      </ol>
+    </nav>
+  </div>
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Mails</h5>
+            <p class="mr-auto">All mails that has been sent by the users</p>
+            <table class="table">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">message</th>
+                  <th scope="col">sent At</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="mails.length > 0">
+                  <tr *ngFor="let contact of mails; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.subject }}</td>
+                    <td>{{ contact.message }}</td>
+                    <td>{{ contact.sentAt | date : "yyyy-MM-dd" }}</td>
+                  </tr>
+                </ng-container>
+                <tr
+                  *ngIf="errorMessage"
+                  class="text-center fw-bold text-danger"
+                >
+                  <td colspan="9">
+                    {{ errorMessage }}
+                  </td>
+                </tr>
+                <tr *ngIf="!mails.length && !errorMessage" class="text-center">
+                  <td colspan="9">
+                    There is no product for this salesman at the moment
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+              <pagination
+                [(ngModel)]="currentPage"
+                [totalItems]="totalItems"
+                [itemsPerPage]="itemsPerPage"
+                [maxSize]="maxSize"
+                [boundaryLinks]="true"
+                (pageChanged)="pageChanged($event)"
+              ></pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

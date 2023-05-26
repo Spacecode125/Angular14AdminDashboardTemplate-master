@@ -68,9 +68,7 @@
                   <div class="label">Email: {{ user.email }}</div>
                 </div>
                 <div class="row">
-                  <div class="label">Address: {{ user.address }}
-
-                  </div>
+                  <div class="label">Address: {{ user.address }}</div>
                 </div>
                 <div class="row">
                   <div class="label">Phone: {{ user.phone }}</div>
@@ -93,7 +91,6 @@
                         accept="image/*"
                         style="display: none"
                         (change)="handleFileInput($event)"
-
                       />
                       <img [src]="getImageSource()" alt="Profile" />
                       <div class="pt-2">
@@ -118,7 +115,7 @@
                       for="firstName"
                       class="col-md-4 col-lg-3 col-form-label"
                       >First Name
-                    </label >
+                    </label>
                     <div class="col-md-8 col-lg-9">
                       <input
                         name="firstName"
@@ -126,8 +123,9 @@
                         class="form-control"
                         id="firstName"
                         value="{{ user.firstName }}"
-                        [ngModel]="profileObj.firstName" (ngModelChange)="profileObj.firstName = $event" required
-
+                        [ngModel]="profileObj.firstName"
+                        (ngModelChange)="profileObj.firstName = $event"
+                        required
                       />
                     </div>
                   </div>
@@ -144,31 +142,37 @@
                         class="form-control"
                         id="lastName"
                         value="{{ user.lastName }}"
-                        [ngModel]="profileObj.lastName" (ngModelChange)="profileObj.lastName = $event" required
+                        [ngModel]="profileObj.lastName"
+                        (ngModelChange)="profileObj.lastName = $event"
+                        required
                       />
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="about" class="col-md-4 col-lg-3 col-form-label"
-                      >About</label>
+                      >About</label
+                    >
                     <div class="col-md-8 col-lg-9">
                       <textarea
                         name="about"
                         class="form-control"
                         id="about"
                         style="height: 100px"
-                        [ngModel]="profileObj.about" (ngModelChange)="profileObj.about = $event" required
+                        [ngModel]="profileObj.about"
+                        (ngModelChange)="profileObj.about = $event"
+                        required
                         >{{ user.about }}
 
-                        </textarea>
+                        </textarea
+                      >
                     </div>
                   </div>
-
                   <div class="row mb-3">
                     <label
                       for="Address"
                       class="col-md-4 col-lg-3 col-form-label"
-                      >Address</label>
+                      >Address</label
+                    >
                     <div class="col-md-8 col-lg-9">
                       <input
                         name="address"
@@ -176,8 +180,9 @@
                         class="form-control"
                         id="Address"
                         value="{{ user.address }}a"
-                        [ngModel]="profileObj.address" (ngModelChange)="profileObj.address = $event" required
-
+                        [ngModel]="profileObj.address"
+                        (ngModelChange)="profileObj.address = $event"
+                        required
                       />
                     </div>
                   </div>
@@ -192,21 +197,101 @@
                         class="form-control"
                         id="Phone"
                         value="{{ user.phone }}"
-                        [ngModel]="profileObj.phone" (ngModelChange)="profileObj.phone = $event" required
+                        [ngModel]="profileObj.phone"
+                        (ngModelChange)="profileObj.phone = $event"
+                        required
                       />
                     </div>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary" (click)="onEditProfile()" >
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      (click)="onEditProfile()"
+                    >
                       Save Changes
                     </button>
                   </div>
                 </form>
               </div>
-              <div
-                class="tab-pane fade pt-3"
-                id="profile-change-password"
-              ></div>
+              <div class="tab-pane fade pt-3" id="profile-change-password">
+                <form class="needs-validation" novalidate>
+                  <div class="row mb-3">
+                    <label
+                      for="oldPassword"
+                      class="col-md-4 col-lg-3 col-form-label"
+                      >Current Password</label
+                    >
+                    <div class="col-md-8 col-lg-9">
+                      <input
+                        name="password"
+                        type="password"
+                        class="form-control"
+                        id="oldPassword"
+                        [ngModel]="passwordObj.oldPassword"
+                        (ngModelChange)="passwordObj.oldPassword = $event"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Please enter your current password
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label
+                      for="newPassword"
+                      class="col-md-4 col-lg-3 col-form-label"
+                      >New Password</label
+                    >
+                    <div class="col-md-8 col-lg-9">
+                      <input
+                        name="newpassword"
+                        type="password"
+                        class="form-control"
+                        id="newPassword"
+                        [ngModel]="passwordObj.newPassword"
+                        (ngModelChange)="passwordObj.newPassword = $event"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Please enter your new password
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label
+                      for="renewPassword"
+                      class="col-md-4 col-lg-3 col-form-label"
+                      >Re-enter New Password</label
+                    >
+                    <div class="col-md-8 col-lg-9">
+                      <input
+                        name="renewpassword"
+                        type="password"
+                        class="form-control"
+                        id="renewPassword"
+                        [ngModel]="passwordObj.renewPassword"
+                        (ngModelChange)="passwordObj.renewPassword = $event"
+                        required
+                      />
+                      <div
+                        class="invalid-feedback"
+                      >
+                      Please re enter your new password
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      (click)="changePassword()"
+                    >
+                      Change Password
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>

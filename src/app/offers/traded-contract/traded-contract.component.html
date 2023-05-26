@@ -36,8 +36,8 @@
                     <th>{{ i + 1 }}</th>
                     <td>{{ contract.tradeInOffer["brand"] }}</td>
                     <td>{{ contract.tradedDevice["brand"] }}</td>
-                    <td>{{ contract.client.firstName }}</td>
-                    <td>{{ contract.client.phone }}</td>
+                    <td>{{ contract.client['firstName'] }}</td>
+                    <td>{{ contract.client['phone'] }}</td>
                     <th
                       [ngClass]="{
                         'text-warning': contract.status === 'Waiting',

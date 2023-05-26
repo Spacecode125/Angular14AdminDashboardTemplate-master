@@ -1,42 +1,62 @@
 <main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Add rented product</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item">Product details</li>
+        <li class="breadcrumb-item">Add rented product</li>
+      </ol>
+    </nav>
+  </div>
   <section class="section">
     <div class="row">
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Rentend Contract</h5>
-            <form (ngSubmit)="onSubmit()">
+            <h5 class="card-title">Add rented product</h5>
+            <form>
               <div class="row mb-3">
-                <label for="inputDate" class="col-sm-2 col-form-label"
+                <label for="validFrom" class="col-sm-2 col-form-label"
                   >Valid From</label
                 >
                 <div class="col-sm-10">
                   <input
+                    id="validFrom"
+                    name="validFrom"
                     type="date"
                     class="form-control"
-                    [(ngModel)]="validFrom"
-                    name="validFrom"
+                    [ngModel]="rentedContractObj.validFrom"
+                    (ngModelChange)="rentedContractObj.validFrom = $event"
+                    required
                   />
                 </div>
               </div>
               <div class="row mb-3">
-                <label for="inputDate" class="col-sm-2 col-form-label"
+                <label for="validTo" class="col-sm-2 col-form-label"
                   >Valid to</label
                 >
                 <div class="col-sm-10">
                   <input
+                    id="validTo"
+                    name="validTo"
                     type="date"
                     class="form-control"
-                    [(ngModel)]="validTo"
-                    name="validTo"
+                    [ngModel]="rentedContractObj.validTo"
+                    (ngModelChange)="rentedContractObj.validTo = $event"
+                    required
                   />
                 </div>
               </div>
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10">
-                  <button type="submit" class="btn btn-primary">
-                    Submit Form
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    (click)="addRentedContract()"
+                  >
+                    Add rented product
                   </button>
                 </div>
               </div>

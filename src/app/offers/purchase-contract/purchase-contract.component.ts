@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-purchase-contract',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class PurchaseContractComponent implements OnInit {
   constructor(
-    private router: Router,
+    private router: Router, private toastr: ToastrService
   ) {}
 
   purchaseContracts: any[] = [];
@@ -51,7 +52,46 @@ export class PurchaseContractComponent implements OnInit {
     }
   }
 
-  deleteContract(contractId: string): void {
-    console.log(`Delete contract with ID: ${contractId}`);
+  acceptPurchase(purchaseId: string): void {
+    const url = `http://localhost:3000/api/purchaseContract/accept/${purchaseId}`;
+    axios
+      .delete(url, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
+      .then((response) => {
+        this.router.navigateByUrl('/purchasecontract').then(() => {
+          setTimeout(() => {
+            location.reload();
+          }, 1000);
+        });
+        this.toastr.success('purchase accepted successfully');
+      })
+      .catch((error) => {
+        this.toastr.error(error.response.data.message);
+      });
   }
+
+  declinePurchase(purchaseId: string): void {
+    const url = `http://localhost:3000/api/purchaseContract/cancel/${purchaseId}`;
+    axios
+      .delete(url, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
+      .then((response) => {
+        this.router.navigateByUrl('/purchasecontract').then(() => {
+          setTimeout(() => {
+            location.reload();
+          }, 1000);
+        });
+        this.toastr.success('purchase accepted successfully');
+      })
+      .catch((error) => {
+        this.toastr.error(error.response.data.message);
+      });
+  }
+
 }
