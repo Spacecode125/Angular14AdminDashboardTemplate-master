@@ -17,32 +17,50 @@
             <h5 class="card-title">Add Contract</h5>
             <form class="row g-3 needs-validation" novalidate>
               <div class="row mb-3">
-                <label for="reference" class="col-sm-2 col-form-label">Reference</label>
+                <label for="reference" class="col-sm-2 col-form-label"
+                  >Reference</label
+                >
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="reference" name="reference"
-                     />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="reference"
+                    name="reference"
+                    required
+                  />
                 </div>
                 <div class="invalid-feedback">Please enter the reference</div>
               </div>
               <div class="row mb-3">
-                <label for="signedbyPartner" class="col-sm-2 col-form-label">Signed by Partner</label>
+                <label for="contractType" class="col-sm-2 col-form-label"
+                  >Contract Type</label
+                >
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="signedbyPartner" name="signedbyPartner"
-                    required />
+                  <select
+                    class="form-select"
+                    id="type"
+                    name="type"
+                    [ngModel]="addContractObj.type"
+                    (ngModelChange)="addContractObj.type = $event"
+                    required
+                  >
+                    <option value="">Select a type</option>
+                    <option value="Purchase">Purchase</option>
+                    <option value="Trade">Trade</option>
+                    <!-- <option value="Rent">Rent</option> -->
+                  </select>
                 </div>
               </div>
-              <div class="row mb-3">
-                <label for="purchaseContractId" class="col-sm-2 col-form-label">Purchase Contract ID</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="purchaseContractId" name="purchaseContractId"
-                     required />
-                </div>
-              </div>
-
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Add Contract</label>
                 <div class="col-sm-10">
-                  <button type="submit" class="btn btn-primary" (click)="addContract()">Add Contract</button>
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    (click)="addContract()"
+                  >
+                    Add Contract
+                  </button>
                 </div>
               </div>
             </form>

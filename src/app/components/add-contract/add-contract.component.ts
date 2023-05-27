@@ -9,31 +9,36 @@ import axios from 'axios';
   styleUrls: ['./add-contract.component.css'],
 })
 export class AddContractComponent implements OnInit {
-  addContractObj: any = {};
+
+  addContractObj: any = {
+    reference: '',
+    signedbyPartner: '',
+    type:'Trade' ||'Purchase'
+  }
 
   constructor(private router: Router, private toastr: ToastrService) {}
 
   addContract(): void {
-    const url = 'http://localhost:3000/api/contract';
-    const { reference, signedbyPartner, purchaseContractId } = this.addContractObj;
+    // const url = 'http://localhost:3000/api/contract';
+    // const { reference, signedbyPartner, purchaseContractId } = this.addContractObj;
 
-    const data = {
-      reference,
-      signedbyPartner,
-      purchaseContractId,
-    };
+    // const data = {
+    //   reference,
+    //   signedbyPartner,
+    //   purchaseContractId,
+    // };
 
-    axios
-      .post(url, data)
-      .then((response) => {
-        console.log(response);
-        this.toastr.success('Contract added successfully');
-        this.router.navigate(['/contracts']);
-      })
-      .catch((error) => {
-        console.log(error);
-        this.toastr.error(error.response.data.message);
-      });
+    // axios
+    //   .post(url, data)
+    //   .then((response) => {
+    //     console.log(response);
+    //     this.toastr.success('Contract added successfully');
+    //     this.router.navigate(['/contracts']);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     this.toastr.error(error.response.data.message);
+    //   });
   }
 
   ngOnInit(): void {}

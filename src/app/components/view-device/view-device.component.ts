@@ -41,7 +41,6 @@ export class ViewDeviceComponent implements OnInit {
         address: user ? user['address'] : null,
       };
     });
-    console.log(this.deviceDetailsObj.deviceId);
   }
 
   purchaseButton(deviceId: any): void {

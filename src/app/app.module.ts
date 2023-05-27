@@ -28,8 +28,8 @@ import { EditDeviceComponent } from './components/edit-device/edit-device.compon
 import { ViewDeviceComponent } from './components/view-device/view-device.component';
 import { Error404Component } from './error404/error404.component';
 import { ViewDeviceStatusComponent } from './offers/view-device-status/view-device-status.component';
-import { AddUserComponent } from './admin/add-user/add-user.component';
-import { DeleteUserComponent } from './admin/delete-user/delete-user.component';
+import { AddUserComponent } from './pages/add-user/add-user.component';
+import { DeleteUserComponent } from './pages/delete-user/delete-user.component';
 import { TradedContractAddComponent } from './pages/tradedContract-add/traded-contract-add.component';
 import { GetContactsComponent } from './pages/get-contacts/get-contacts.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';

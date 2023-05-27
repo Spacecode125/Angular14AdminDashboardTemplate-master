@@ -21,9 +21,9 @@ export class RentedContractComponent implements OnInit {
     this.token = output ? JSON.parse(output) : null;
     const output2 = window.localStorage.getItem('user');
     this.user = output2 ? JSON.parse(output2) : null;
-    if(this.user.role=='admin'){
+    if (this.user.role == 'admin') {
       this.url = 'http://localhost:3000/api/rentedContract';
-    }else{
+    } else {
       this.url = 'http://localhost:3000/api/rentedContract/salesman';
     }
     axios
@@ -42,6 +42,7 @@ export class RentedContractComponent implements OnInit {
   }
 
   navigateToDeviceDetails(device: any): void {
+    console.log(device);
     if (device != null) {
       const queryParams = { ...device, user: JSON.stringify(device.user) };
       this.router.navigate(['/view-device'], { queryParams });
@@ -52,14 +53,23 @@ export class RentedContractComponent implements OnInit {
 
   navigateToAddDeviceStatus(deviceId: any): void {
     if (deviceId != null) {
-      this.router.navigate(['/add-devicestatus'], { queryParams:{ deviceId} });
+      this.router.navigate(['/add-devicestatus'], {
+        queryParams: { deviceId },
+      });
     } else {
       this.router.navigate(['/error-404']);
     }
   }
 
-  navigateToViewDeviceStatus(deviceStatusId: any): void {
-    this.router.navigate(['/view-deviceStatus'], { queryParams: {deviceStatusId} });
+  navigateToViewDeviceStatus(devicesStatus: any): void {
+    console.log(devicesStatus);
+    if (devicesStatus != null) {
+      this.router.navigate(['/view-deviceStatus'], {
+        queryParams:  devicesStatus ,
+      });
+    } else {
+      this.router.navigate(['/error-404']);
+    }
   }
 
   deleteRentedDevice(id: any): void {

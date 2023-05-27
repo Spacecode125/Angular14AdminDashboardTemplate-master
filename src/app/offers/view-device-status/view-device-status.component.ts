@@ -8,31 +8,19 @@ import axios from 'axios';
   styleUrls: ['./view-device-status.component.css'],
 })
 export class ViewDeviceStatusComponent implements OnInit {
-  deviceStatusId: any;
-  deviceStatusDetailsObj: any = [];
-  errorMessage: String = '';
-  token: any;
+  deviceStatusDetailsObj: any = {};
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      this.deviceStatusId = params['deviceStatusId'];
+      console.log(params)
+      this.deviceStatusDetailsObj = {
+        descriptionBeforeRent: params['descriptionBeforeRent'],
+        descriptionAfterRent: params['descriptionAfterRent'],
+        pictureBeforeRent: params['pictureBeforeRent'],
+        pictureAfterRent: params['pictureAfterRent'],
+      };
     });
-    const output = window.localStorage.getItem('token');
-    this.token = output ? JSON.parse(output) : null;
-    const url = `http://localhost:3000/api/deviceStatus/${this.deviceStatusId}`;
-    axios
-      .get(url, {
-        headers: {
-          Authorization: `Bearer ${this.token}`,
-        },
-      })
-      .then((response) => {
-        this.deviceStatusDetailsObj = response.data;
-      })
-      .catch((error) => {
-        this.errorMessage = error.response.data.message;
-      });
   }
 }

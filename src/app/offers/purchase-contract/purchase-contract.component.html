@@ -35,7 +35,7 @@
                   <tr *ngFor="let contract of purchaseContracts; let i = index">
                     <th>{{ i+1 }}</th>
                     <td>{{ contract.device.brand }}</td>
-                    <td>{{ contract.client.phone }}</td>
+                    <td>{{ contract.client.firstName }}</td>
                     <td>{{ contract.client.phone }}</td>
                     <th
                       [ngClass]="{

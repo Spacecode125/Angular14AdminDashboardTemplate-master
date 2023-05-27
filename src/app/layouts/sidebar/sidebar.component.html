@@ -34,33 +34,7 @@
       </ul>
     </li>
 
-    <li class="nav-item" *ngIf="user.role === 'admin'">
-      <a
-        class="nav-link collapsed"
-        data-bs-target="#admin-nav"
-        data-bs-toggle="collapse"
-        href="/admin/add"
-      >
-        <i class="bi bi-menu-button-wide"></i><span>Admin</span
-        ><i class="bi bi-chevron-down ms-auto"></i>
-      </a>
-      <ul
-        id="admin-nav"
-        class="nav-content collapse"
-        data-bs-parent="#sidebar-nav"
-      >
-        <li>
-          <a routerLink="/add-user">
-            <i class="bi bi-circle"></i><span>Add User</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/delete-user">
-            <i class="bi bi-circle"></i><span>Delete User</span>
-          </a>
-        </li>
-      </ul>
-    </li>
+    
 
     <li class="nav-item" *ngIf="user.role != 'user'">
       <a
@@ -98,6 +72,17 @@
           </a>
         </li>
       </ul>
+    </li>
+    <li class="nav-item" *ngIf="user.role === 'admin'">
+      <a
+        class="nav-link collapsed"
+        data-bs-toggle="collapse"
+        routerLink="/users"
+      >
+        <i class="bi bi-menu-button-wide"></i><span>User</span
+        >
+      </a>
+      
     </li>
     <li class="nav-item">
       <a
