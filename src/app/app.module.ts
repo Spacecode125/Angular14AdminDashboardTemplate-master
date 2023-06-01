@@ -12,7 +12,6 @@ import { PagesContactComponent } from './pages/pages-contact/pages-contact.compo
 import { PagesRegisterComponent } from './pages/pages-register/pages-register.component';
 import { LoginComponent } from './pages/pages-login/pages-login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { AddDeviceComponent } from './components/add-device/add-device.component';
 import { AddDevicestatusComponent } from './offers/devicestatus-add/devicestatus-add.component';
 import { AddRentedcontractComponent } from './pages/rentedContract-add/rentedContract-add.component';
@@ -34,6 +33,9 @@ import { TradedContractAddComponent } from './pages/tradedContract-add/traded-co
 import { GetContactsComponent } from './pages/get-contacts/get-contacts.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
+import { AddContractComponent } from './components/add-contract/add-contract.component';
+import { ViewContractComponent } from './components/view-contract/view-contract.component';
 
 
 
@@ -70,6 +72,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     DeleteUserComponent,
     TradedContractAddComponent,
     GetContactsComponent,
+    AddContractComponent,
+    ViewContractComponent,
   ],
   imports: [
     BrowserModule,

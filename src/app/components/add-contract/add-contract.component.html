@@ -26,6 +26,8 @@
                     class="form-control"
                     id="reference"
                     name="reference"
+                    [(ngModel)]="reference"
+                    (ngModelChange)="reference = $event"
                     required
                   />
                 </div>
@@ -38,27 +40,54 @@
                 <div class="col-sm-10">
                   <select
                     class="form-select"
-                    id="type"
-                    name="type"
-                    [ngModel]="addContractObj.type"
-                    (ngModelChange)="addContractObj.type = $event"
+                    id="contractType"
+                    name="contractType"
+                    [(ngModel)]="contractType"
+                    (ngModelChange)="checkSelectedValue()"
                     required
                   >
-                    <option value="">Select a type</option>
+                    <option value="" disabled selected>Select a type</option>
                     <option value="Purchase">Purchase</option>
                     <option value="Trade">Trade</option>
-                    <!-- <option value="Rent">Rent</option> -->
+                    <option value="Rent">Rent</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="product" class="col-sm-2 col-form-label"
+                  >Choose product</label
+                >
+                <div class="col-sm-10">
+                  <select
+                    class="form-select"
+                    id="product"
+                    name="product"
+                    required
+                    [(ngModel)]="product"
+                    [disabled]="contractType === ''"
+                  >
+                    <option [value]="null" disabled>Select a product</option>
+                    <option
+                      *ngFor="let device of contracts"
+                      [ngValue]="device"
+                    >
+                      {{ device.client.firstName }}
+                      {{ device.client.lastName }} |
+                      <ng-container *ngIf="contractType === 'Trade'">
+                        Offer: {{ device.tradeInOffer.brand }} | Traded offer:
+                        {{ device.tradedDevice.brand }}
+                      </ng-container>
+                      <ng-container *ngIf="contractType !== 'Trade'">
+                        {{ device.device.brand }}
+                      </ng-container>
+                    </option>
                   </select>
                 </div>
               </div>
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Add Contract</label>
                 <div class="col-sm-10">
-                  <button
-                    type="submit"
-                    class="btn btn-primary"
-                    (click)="addContract()"
-                  >
+                  <button type="submit" class="btn btn-primary" (click)="addContract()">
                     Add Contract
                   </button>
                 </div>

@@ -1,0 +1,209 @@
+<main id="main" class="main">
+  <div class="container" #container>
+    <div class="row justify-content-between">
+      <div class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="" />
+        <span class="d-none d-lg-block">L mobile</span>
+      </div>
+      <div class="col-md-6 text-end">
+        <button *ngIf="!isDownloaded" class="btn btn-primary" (click)="printPDFContract()">
+          Export to PDF
+        </button>
+      </div>
+    </div>
+    <hr class="bg-dark" style="height: 3px" />
+    <div class="row justify-content-end">
+      <div class="col-auto text-end">
+        <h2 class="fw-bold text-center text-dark">
+          Reference:
+          <span class="text-secondary">{{ contractObj.reference }}</span>
+        </h2>
+        <span class="text-secondary fs-5 fw-bold">{{
+          contractObj.createdAt | date : "yyyy-MM-dd"
+        }}</span>
+      </div>
+    </div>
+
+    <br />
+    <br />
+    <div class="row justify-content-evenly">
+      <div class="col-md-6">
+        <div class="col">
+          <strong>Owner address</strong>
+        </div>
+        <div class="col">
+          <span
+            >{{ contractObj.owner.firstName }}
+            {{ contractObj.owner.lastName }}</span
+          >
+        </div>
+        <div class="col">
+          <span>{{ contractObj.owner.phone }}</span>
+        </div>
+        <div class="col">
+          <span>{{ contractObj.owner.address }}</span>
+        </div>
+        <div class="col"><span>Tunisia</span></div>
+      </div>
+      <div class="col-md-6">
+        <div class="col">
+          <strong>Client address</strong>
+        </div>
+        <div class="col">
+          <span
+            >{{ contractObj.client.firstName }}
+            {{ contractObj.client.lastName }}</span
+          >
+        </div>
+        <div class="col">
+          <span>{{ contractObj.client.phone }}</span>
+        </div>
+        <div class="col">
+          <span>{{ contractObj.client.address }}</span>
+        </div>
+        <div class="col"><span>Tunisia</span></div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div class="row" *ngIf="contractObj.rent">
+      <div class="col">
+        <div class="border p-3">
+          <div class="row text-center">
+            <div class="col">
+              <strong>Product</strong>
+            </div>
+            <div class="col">
+              <strong>Serial number</strong>
+            </div>
+            <div class="col">
+              <strong>Total price</strong>
+            </div>
+            <div class="col">
+              <strong>Valid from</strong>
+            </div>
+            <div class="col">
+              <strong>Valid to</strong>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col">
+              <span>{{ contractObj.rent.device.brand }}</span>
+            </div>
+            <div class="col">
+              <span>{{ contractObj.rent.device.serialNumber }}</span>
+            </div>
+            <div class="col">
+              <span>{{ contractObj.rent.total }} DT</span>
+            </div>
+            <div class="col">
+              <span>{{
+                contractObj.rent.validFrom | date : "yyyy-MM-dd"
+              }}</span>
+            </div>
+            <div class="col">
+              <span>{{ contractObj.rent.validTo | date : "yyyy-MM-dd" }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="contractObj.trade">
+      <div class="col">
+        <div class="border p-3">
+          <div class="row text-center">
+            <div class="col">
+              <strong>Traded Product</strong>
+            </div>
+            <div class="col">
+              <strong>Serial number</strong>
+            </div>
+            <div class="col">
+              <strong>Trade offer</strong>
+            </div>
+            <div class="col">
+              <strong>Serial number</strong>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col">
+              <span>{{ contractObj.trade.tradedDevice.brand }}</span>
+            </div>
+            <div class="col">
+              <span>{{ contractObj.trade.tradedDevice.serialNumber }}</span>
+            </div>
+            <div class="col">
+              <span>{{ contractObj.trade.tradeInOffer.brand }}</span>
+            </div>
+            <div class="col">
+              <span>{{ contractObj.trade.tradeInOffer.serialNumber }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="contractObj.purchase">
+      <div class="col">
+        <div class="border p-3">
+          <div class="row text-center">
+            <div class="col">
+              <strong>Product</strong>
+            </div>
+            <div class="col">
+              <strong>Serial number</strong>
+            </div>
+            <div class="col">
+              <strong>Price</strong>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col">
+              <span>{{ contractObj.purchase.device.brand }}</span>
+            </div>
+            <div class="col">
+              <span>{{ contractObj.purchase.device.serialNumber }}</span>
+            </div>
+            <div class="col">
+              <span>{{ contractObj.purchase.price }} DT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <h1 class="fw-bold text-center text-dark">Contract rights</h1>
+    <p class="text-justify text-align-justify">
+      This contract encompasses the rights of both the salesman and the client
+      involved in the trade, rental, or purchase. As the salesman, you have the
+      right to receive fair compensation for the product or service provided, as
+      agreed upon in the contract. You also have the right to ensure that the
+      client adheres to the terms and conditions specified, including timely
+      payment and proper usage of the product or service. As the client, you
+      possess the right to expect the product or service to meet the agreed-upon
+      standards of quality and functionality. You also have the right to request
+      any necessary documentation or information related to the product or
+      service before finalizing the deal. Both parties have the right to engage
+      in open and honest communication, addressing any concerns or issues that
+      may arise during the duration of the contract. These rights serve to
+      protect the interests and ensure the satisfaction of both the salesman and
+      the client.
+    </p>
+    <div class="row justify-content-around">
+      <div class="col-md-6"><strong>Owner Signature</strong></div>
+      <div class="col-md-6"><strong>Client Signature</strong></div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="text-center">
+      <p>
+        Phone: +49 (0) 7193 93 - Email: info@l-mobile.com | Web site:
+        <a href="https://l-mobile.com/en/">https://l-mobile.com/en/</a>
+      </p>
+    </div>
+  </div>
+</main>

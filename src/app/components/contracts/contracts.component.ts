@@ -43,20 +43,17 @@ export class ContractsComponent implements OnInit {
       });
   }
 
-  navigateToDeviceDetails(contract: any): void {
+  navigateToContractDetails(contract: any): void {
     if (contract != null) {
-      if (contract.type == 'Rental') {
-        this.contractType = contract.RentedContract.device;
-      } else if (contract.type == 'Trade') {
-        this.contractType = contract.TradedContract.tradedDevice;
-      } else if (contract.type == 'Purchase') {
-        this.contractType = contract.PurchaseContract.device;
-      }
       const queryParams = {
-        ...this.contractType,
-        user: JSON.stringify(contract.signedbyOwner),
+        ...contract,
+        signedbyOwner: JSON.stringify(contract.signedbyOwner),
+        signedbyPartner: JSON.stringify(contract.signedbyPartner),
+        RentedContract: JSON.stringify(contract.RentedContract),
+        TradedContract: JSON.stringify(contract.TradedContract),
+        PurchaseContract: JSON.stringify(contract.PurchaseContract),
       };
-      this.router.navigate(['/view-device'], { queryParams });
+      this.router.navigate(['/view-contract'], { queryParams });
     } else {
       this.router.navigate(['/error-404']);
     }

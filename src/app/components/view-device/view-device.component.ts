@@ -48,7 +48,7 @@ export class ViewDeviceComponent implements OnInit {
     console.log(deviceId);
     const url = `http://localhost:3000/api/purchaseContract/${deviceId}`;
     axios
-      .post(url, {
+      .post(url,{}, {
         headers: {
           Authorization: `Bearer ${this.token}`,
         },

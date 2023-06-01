@@ -39,7 +39,7 @@ export class PurchaseContractComponent implements OnInit {
       })
       .catch(error => {
         console.error(error);
-        this.errorMessage = 'Failed to fetch purchase contracts.';
+        this.errorMessage = error.response.data.message;
       });
   }
 
